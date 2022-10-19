@@ -41,6 +41,8 @@ namespace QLKhachSan
             cboTinhNang.DataSource = tinhnang;
             cboTinhNang.SelectedIndex = 0;
 
+            this.ActiveControl = txtTenThietBi;
+            
             btnThem.Enabled = true;
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
@@ -236,21 +238,33 @@ namespace QLKhachSan
         private void btnXoa_Click(object sender, EventArgs e)
         {
             data = new QLKSEntities();
+            Boolean canDelete = true;
 
             if (MessageBox.Show("Are you sure!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 string _MaThietBi = txtMaThietBi.Text.Trim();
 
-                var thietbi = (tThietBi)data.tThietBis
+                var thietbi_trangbi = data.tTrangBis
                     .Where(x => x.MaThietBi == _MaThietBi)
                     .FirstOrDefault();
 
-                data.tThietBis.Remove(thietbi);
-                data.SaveChanges();
-                LoadData();
-                MessageBox.Show("Xoá thành công", "Thông báo");
+                if (thietbi_trangbi != null)
+                {
+                    MessageBox.Show("Xoá không được, thiết bị đang được trang bị cho phòng", "Thông báo");
+                    canDelete = false;
+                }
+                else if (canDelete)
+                {
+                    var thietbi = data.tThietBis
+                        .Where(x => x.MaThietBi == _MaThietBi)
+                        .FirstOrDefault();
 
-                CLEAR();
+                    data.tThietBis.Remove(thietbi);
+                    data.SaveChanges();
+                    LoadData();
+                    MessageBox.Show("Xoá thành công", "Thông báo");
+                    CLEAR();
+                }
             }
         }
 
@@ -266,6 +280,8 @@ namespace QLKhachSan
             txtTenThietBi.Text = "";
             txtGiaMua.Text = "0";
             cboTinhNang.SelectedIndex = 0;
+
+            this.ActiveControl = txtTenThietBi;
 
             btnThem.Enabled = true;
             btnCapNhat.Enabled = false;

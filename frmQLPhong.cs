@@ -129,6 +129,7 @@ namespace QLKhachSan
                 MessageBox.Show("Thêm thành công", "Thông báo");
 
                 CLEAR();
+                this.ActiveControl = txtGiaTien;
             }
         }
 
@@ -217,21 +218,42 @@ namespace QLKhachSan
         private void btnXoa_Click(object sender, EventArgs e)
         {
             data = new QLKSEntities();
+            Boolean canDelete = true;
 
             if (MessageBox.Show("Are you sure!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 string _SoPhong = txtSoPhong.Text.Trim();
 
-                var phong = (tPhong) data.tPhongs
+                var phong_thue = data.tThuePhongs
+                        .Where(x => x.SoPhong == _SoPhong)
+                        .FirstOrDefault();
+
+                var phong_trangbi = data.tTrangBis
                     .Where(x => x.SoPhong == _SoPhong)
                     .FirstOrDefault();
 
-                data.tPhongs.Remove(phong);
-                data.SaveChanges();
-                LoadData();
-                MessageBox.Show("Xoá thành công", "Thông báo");
+                if (phong_thue != null)
+                {
+                    MessageBox.Show("Xoá không được, phòng đang được thuê", "Thông báo");
+                    canDelete = false;
+                }
+                else if (phong_trangbi != null)
+                {
+                    MessageBox.Show("Xoá không được, phòng đang được trang bị", "Thông báo");
+                    canDelete = false;
+                }
+                else if (canDelete)
+                {
+                    var phong = data.tPhongs
+                        .Where(x => x.SoPhong == _SoPhong)
+                        .FirstOrDefault();
 
-                CLEAR();
+                    data.tPhongs.Remove(phong);
+                    data.SaveChanges();
+                    LoadData();
+                    MessageBox.Show("Xoá thành công", "Thông báo");
+                    CLEAR();
+                }
             }
         }
 
@@ -257,6 +279,14 @@ namespace QLKhachSan
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void frmQLPhong_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((int)e.KeyChar == (int)Keys.Enter) 
+            {
+                MessageBox.Show("Enter key pressed!", "Thông báo");
             }
         }
     }

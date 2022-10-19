@@ -110,7 +110,7 @@ namespace QLKhachSan
             this.btnHuyBo.Location = new System.Drawing.Point(492, 175);
             this.btnHuyBo.Name = "btnHuyBo";
             this.btnHuyBo.Size = new System.Drawing.Size(123, 61);
-            this.btnHuyBo.TabIndex = 13;
+            this.btnHuyBo.TabIndex = 9;
             this.btnHuyBo.Text = "Hủy bỏ";
             this.btnHuyBo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -125,7 +125,7 @@ namespace QLKhachSan
             this.btnXoa.Location = new System.Drawing.Point(338, 175);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(123, 61);
-            this.btnXoa.TabIndex = 12;
+            this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -140,7 +140,7 @@ namespace QLKhachSan
             this.btnCapNhat.Location = new System.Drawing.Point(182, 175);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(123, 61);
-            this.btnCapNhat.TabIndex = 11;
+            this.btnCapNhat.TabIndex = 7;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -155,7 +155,7 @@ namespace QLKhachSan
             this.btnThem.Location = new System.Drawing.Point(31, 175);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(123, 61);
-            this.btnThem.TabIndex = 10;
+            this.btnThem.TabIndex = 6;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -168,7 +168,7 @@ namespace QLKhachSan
             this.dtNgayMua.Location = new System.Drawing.Point(542, 63);
             this.dtNgayMua.Name = "dtNgayMua";
             this.dtNgayMua.Size = new System.Drawing.Size(138, 22);
-            this.dtNgayMua.TabIndex = 9;
+            this.dtNgayMua.TabIndex = 5;
             // 
             // cboTinhNang
             // 
@@ -178,14 +178,14 @@ namespace QLKhachSan
             this.cboTinhNang.Location = new System.Drawing.Point(290, 128);
             this.cboTinhNang.Name = "cboTinhNang";
             this.cboTinhNang.Size = new System.Drawing.Size(197, 24);
-            this.cboTinhNang.TabIndex = 8;
+            this.cboTinhNang.TabIndex = 4;
             // 
             // txtGiaMua
             // 
             this.txtGiaMua.Location = new System.Drawing.Point(290, 65);
             this.txtGiaMua.Name = "txtGiaMua";
             this.txtGiaMua.Size = new System.Drawing.Size(197, 22);
-            this.txtGiaMua.TabIndex = 7;
+            this.txtGiaMua.TabIndex = 3;
             this.txtGiaMua.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtGiaMua_KeyPress);
             // 
             // label6
@@ -220,14 +220,14 @@ namespace QLKhachSan
             this.txtTenThietBi.Location = new System.Drawing.Point(31, 130);
             this.txtTenThietBi.Name = "txtTenThietBi";
             this.txtTenThietBi.Size = new System.Drawing.Size(200, 22);
-            this.txtTenThietBi.TabIndex = 3;
+            this.txtTenThietBi.TabIndex = 2;
             // 
             // txtMaThietBi
             // 
             this.txtMaThietBi.Location = new System.Drawing.Point(31, 65);
             this.txtMaThietBi.Name = "txtMaThietBi";
             this.txtMaThietBi.Size = new System.Drawing.Size(200, 22);
-            this.txtMaThietBi.TabIndex = 2;
+            this.txtMaThietBi.TabIndex = 1;
             // 
             // label3
             // 

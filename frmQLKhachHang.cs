@@ -31,6 +31,8 @@ namespace QLKhachSan
 
             txtDienThoai.Text = "";
 
+            this.ActiveControl = txtTenKhach;
+
             btnThem.Enabled = true;
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
@@ -195,21 +197,32 @@ namespace QLKhachSan
         private void btnXoa_Click(object sender, EventArgs e)
         {
             data = new QLKSEntities();
-
+            Boolean canDelete = true;
             if (MessageBox.Show("Are you sure!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
             {
                 string _MaKhach = txtMaKhach.Text.Trim();
 
-                var khach = (tKhach)data.tKhaches
-                    .Where(x => x.MaKhach == _MaKhach)
-                    .FirstOrDefault();
+                var khach_thue = data.tThuePhongs
+                        .Where(x => x.MaKhach == _MaKhach)
+                        .FirstOrDefault();
 
-                data.tKhaches.Remove(khach);
-                data.SaveChanges();
-                LoadData();
-                MessageBox.Show("Xoá thành công", "Thông báo");
+                if (khach_thue != null)
+                {
+                    MessageBox.Show("Xoá không được, khách đang thuê phòng", "Thông báo");
+                    canDelete = false;
+                }
+                else if (canDelete)
+                {
+                    var khach = data.tKhaches
+                        .Where(x => x.MaKhach == _MaKhach)
+                        .FirstOrDefault();
 
-                CLEAR();
+                    data.tKhaches.Remove(khach);
+                    data.SaveChanges();
+                    LoadData();
+                    MessageBox.Show("Xoá thành công", "Thông báo");
+                    CLEAR();
+                }
             }
         }
 
@@ -225,6 +238,8 @@ namespace QLKhachSan
             txtTenKhach.Text = "";
             txtSoCMND.Text = "";
             txtDienThoai.Text = "";
+
+            this.ActiveControl = txtTenKhach;
 
             btnThem.Enabled = true;
             btnCapNhat.Enabled = false;

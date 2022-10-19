@@ -131,7 +131,7 @@ namespace QLKhachSan
             this.txtDienThoai.Location = new System.Drawing.Point(330, 128);
             this.txtDienThoai.Name = "txtDienThoai";
             this.txtDienThoai.Size = new System.Drawing.Size(237, 22);
-            this.txtDienThoai.TabIndex = 21;
+            this.txtDienThoai.TabIndex = 3;
             this.txtDienThoai.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtDienThoai_KeyPress);
             // 
             // txtSoCMND
@@ -139,7 +139,7 @@ namespace QLKhachSan
             this.txtSoCMND.Location = new System.Drawing.Point(330, 61);
             this.txtSoCMND.Name = "txtSoCMND";
             this.txtSoCMND.Size = new System.Drawing.Size(237, 22);
-            this.txtSoCMND.TabIndex = 20;
+            this.txtSoCMND.TabIndex = 2;
             this.txtSoCMND.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoCMND_KeyPress);
             // 
             // txtTenKhach
@@ -147,7 +147,7 @@ namespace QLKhachSan
             this.txtTenKhach.Location = new System.Drawing.Point(25, 128);
             this.txtTenKhach.Name = "txtTenKhach";
             this.txtTenKhach.Size = new System.Drawing.Size(241, 22);
-            this.txtTenKhach.TabIndex = 19;
+            this.txtTenKhach.TabIndex = 1;
             // 
             // txtMaKhach
             // 
@@ -156,7 +156,7 @@ namespace QLKhachSan
             this.txtMaKhach.Name = "txtMaKhach";
             this.txtMaKhach.ReadOnly = true;
             this.txtMaKhach.Size = new System.Drawing.Size(123, 22);
-            this.txtMaKhach.TabIndex = 18;
+            this.txtMaKhach.TabIndex = 0;
             // 
             // label7
             // 
@@ -175,7 +175,7 @@ namespace QLKhachSan
             this.btnHuyBo.Location = new System.Drawing.Point(473, 183);
             this.btnHuyBo.Name = "btnHuyBo";
             this.btnHuyBo.Size = new System.Drawing.Size(120, 61);
-            this.btnHuyBo.TabIndex = 13;
+            this.btnHuyBo.TabIndex = 7;
             this.btnHuyBo.Text = "Hủy bỏ";
             this.btnHuyBo.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnHuyBo.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -190,7 +190,7 @@ namespace QLKhachSan
             this.btnXoa.Location = new System.Drawing.Point(327, 183);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(123, 61);
-            this.btnXoa.TabIndex = 12;
+            this.btnXoa.TabIndex = 6;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnXoa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -205,7 +205,7 @@ namespace QLKhachSan
             this.btnCapNhat.Location = new System.Drawing.Point(173, 183);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(123, 61);
-            this.btnCapNhat.TabIndex = 11;
+            this.btnCapNhat.TabIndex = 5;
             this.btnCapNhat.Text = "Cập nhật";
             this.btnCapNhat.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCapNhat.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -220,7 +220,7 @@ namespace QLKhachSan
             this.btnThem.Location = new System.Drawing.Point(22, 183);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(123, 61);
-            this.btnThem.TabIndex = 10;
+            this.btnThem.TabIndex = 4;
             this.btnThem.Text = "Thêm";
             this.btnThem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnThem.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

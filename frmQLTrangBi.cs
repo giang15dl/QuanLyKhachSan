@@ -40,6 +40,8 @@ namespace QLKhachSan
             dtNgayKetThucTrangBi.Format = DateTimePickerFormat.Custom;
             dtNgayKetThucTrangBi.CustomFormat = "dd/MM/yyyy";
 
+            this.ActiveControl = cboSoPhong;
+
             btnThem.Enabled = true;
             btnCapNhat.Enabled = false;
             btnXoa.Enabled = false;
@@ -256,6 +258,8 @@ namespace QLKhachSan
             cboSoPhong.Enabled = true;
             cboThietBi.SelectedIndex = -1;
             cboThietBi.Enabled = true;
+
+            this.ActiveControl = cboSoPhong;
 
             btnThem.Enabled = true;
             btnCapNhat.Enabled = false;
