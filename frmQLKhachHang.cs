@@ -126,6 +126,25 @@ namespace QLKhachSan
             }
         }
 
+        private bool ValidateInputData()
+        {
+            data = new QLKSEntities();
+
+            if (txtSoCMND.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Số CMND trống!", "Thông báo");
+                return false;
+            }
+
+            if (txtDienThoai.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Số điện thoại trống!", "Thông báo");
+                return false;
+            }
+
+            return true;
+        }
+
         private string autoGenarateMaKhach()
         {
             int numberofRows = dgKhachHang.Rows.Count;
@@ -166,25 +185,6 @@ namespace QLKhachSan
                 }
             }
             return "K001";
-        }
-
-        private bool ValidateInputData()
-        {
-            data = new QLKSEntities();
-
-            if (txtSoCMND.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Số CMND trống!", "Thông báo");
-                return false;
-            }
-
-            if (txtDienThoai.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Số điện thoại trống!", "Thông báo");
-                return false;
-            }
-
-            return true;
         }
 
         private void btnCapNhat_Click(object sender, EventArgs e)

@@ -182,33 +182,45 @@ namespace QLKhachSan
             {
                 int lastRowIndex = numberofRows - 1;
                 DataGridViewRow lastRow = dgThietBi.Rows[lastRowIndex];
-                char[] MaThietBiLastRow = lastRow.Cells[1].Value.ToString().ToArray(); // ex {'T','B','0','0','1'}
+                char[] MaThietBiLastRow = lastRow.Cells[1].Value.ToString().ToArray(); //ex {'T','B','0','0','1'}
 
-                if (int.Parse(MaThietBiLastRow[2].ToString()) <= 0)
+                if (int.Parse(MaThietBiLastRow[2].ToString()) == 0)
                 {
-                    if (int.Parse(MaThietBiLastRow[3].ToString()) <= 0)
+                    if (int.Parse(MaThietBiLastRow[3].ToString()) == 0)
                     {
-                        int idex4 = int.Parse(MaThietBiLastRow[4].ToString());
-                        string MaThietBi = "TB00" + (idex4 + 1);
-                        return MaThietBi;
+                        if (int.Parse(MaThietBiLastRow[4].ToString()) == 9)
+                        {
+                            return "TB010";
+                        }
+                        else if (int.Parse(MaThietBiLastRow[4].ToString()) <= 8)
+                        {
+                            int idex4 = int.Parse(MaThietBiLastRow[4].ToString());
+                            string MaThietBi = "TB00" + (idex4 + 1);
+                            return MaThietBi;
+                        }
                     }
-                    else if (int.Parse(MaThietBiLastRow[3].ToString()) > 0)
+                    else
                     {
-                        string idex3 = MaThietBiLastRow[3].ToString();
-                        string idex4 = MaThietBiLastRow[4].ToString();
-                        string index34 = idex3 + idex4;
-
-                        string MaThietBi = "TB0" + (int.Parse(index34) + 1);
-                        return MaThietBi;
+                        if (int.Parse(MaThietBiLastRow[3].ToString()) == 9 && int.Parse(MaThietBiLastRow[4].ToString()) == 9)
+                        {
+                            return "TB100";
+                        }
+                        else
+                        {
+                            string idex3 = MaThietBiLastRow[3].ToString();
+                            string idex4 = MaThietBiLastRow[4].ToString();
+                            string index34 = idex3 + idex4;
+                            string MaThietBi = "TB0" + (int.Parse(index34) + 1);
+                            return MaThietBi;
+                        }
                     }
                 }
-                else if (int.Parse(MaThietBiLastRow[2].ToString()) > 0)
+                else
                 {
-                    string index2 = MaThietBiLastRow[2].ToString();
-                    string index3 = MaThietBiLastRow[3].ToString();
-                    string index4 = MaThietBiLastRow[4].ToString();
-                    string index234 = index2 + index3 + index4;
-
+                    string idex2 = MaThietBiLastRow[2].ToString();
+                    string idex3 = MaThietBiLastRow[3].ToString();
+                    string idex4 = MaThietBiLastRow[4].ToString();
+                    string index234 = idex2 + idex3 + idex4;
                     string MaThietBi = "TB" + (int.Parse(index234) + 1);
                     return MaThietBi;
                 }

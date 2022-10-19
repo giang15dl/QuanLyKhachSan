@@ -135,40 +135,51 @@ namespace QLKhachSan
         private string autoGenarateSoPhong()
         {
             int numberofRows = dgPhong.Rows.Count;
-            
+
             if (numberofRows > 0)
             {
                 int lastRowIndex = numberofRows - 1;
                 DataGridViewRow lastRow = dgPhong.Rows[lastRowIndex];
-                char[] SoPhongLastRow = lastRow.Cells[1].Value.ToString().ToArray(); //ex {'P','0','0','1'}
+                char[] MaPhongLastRow = lastRow.Cells[1].Value.ToString().ToArray(); //ex {'P','0','0','1'}
 
-                if (int.Parse(SoPhongLastRow[1].ToString()) <= 0)
+                if (int.Parse(MaPhongLastRow[1].ToString()) == 0)
                 {
-                    if (int.Parse(SoPhongLastRow[2].ToString()) <= 0)
+                    if (int.Parse(MaPhongLastRow[2].ToString()) == 0)
                     {
-                        int idex3 = int.Parse(SoPhongLastRow[3].ToString());
-                        string SoPhong = "P00" + (idex3+1);
-                        return SoPhong;
+                        if (int.Parse(MaPhongLastRow[3].ToString()) == 9)
+                        {
+                            return "P010";
+                        }
+                        else if (int.Parse(MaPhongLastRow[3].ToString()) <= 8)
+                        {
+                            int idex3 = int.Parse(MaPhongLastRow[3].ToString());
+                            string MaPhong = "P00" + (idex3 + 1);
+                            return MaPhong;
+                        }
                     }
-                    else if (int.Parse(SoPhongLastRow[2].ToString()) > 0)
+                    else
                     {
-                        string idex2 = SoPhongLastRow[2].ToString();
-                        string idex3 = SoPhongLastRow[3].ToString();
-                        string index23 = idex2 + idex3;
-
-                        string SoPhong = "P0" + (int.Parse(index23)+1);
-                        return SoPhong;
+                        if (int.Parse(MaPhongLastRow[2].ToString()) == 9 && int.Parse(MaPhongLastRow[3].ToString()) == 9)
+                        {
+                            return "P100";
+                        }
+                        else
+                        {
+                            string idex2 = MaPhongLastRow[2].ToString();
+                            string idex3 = MaPhongLastRow[3].ToString();
+                            string index23 = idex2 + idex3;
+                            string MaPhong = "P0" + (int.Parse(index23) + 1);
+                            return MaPhong;
+                        }
                     }
                 }
-                else if (int.Parse(SoPhongLastRow[1].ToString()) > 0)
+                else
                 {
-                    string index1 = SoPhongLastRow[1].ToString();
-                    string index2 = SoPhongLastRow[2].ToString();
-                    string index3 = SoPhongLastRow[3].ToString();
-                    string index123 = index1 + index2 + index3;
-
-                    string SoPhong = "P" + (int.Parse(index123) + 1);
-                    return SoPhong;
+                    string idex1 = MaPhongLastRow[1].ToString();
+                    string idex2 = MaPhongLastRow[2].ToString();
+                    string idex3 = MaPhongLastRow[3].ToString();
+                    string index123 = idex1 + idex2 + idex3;
+                    string MaPhong = "P" + (int.Parse(index123) + 1);
                 }
             }
             return "P001";
