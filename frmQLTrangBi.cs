@@ -221,7 +221,18 @@ namespace QLKhachSan
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-
+            if (ValidateInputData())
+            {
+                data = new QLKSEntities();
+                string _SoPhong = cboSoPhong.SelectedValue.ToString();
+                string _MaThietBi = cboThietBi.SelectedValue.ToString();
+                var quanlytrangbi = data.tTrangBis.Where(x => x.SoPhong == _SoPhong && x.MaThietBi == _MaThietBi).FirstOrDefault();
+                quanlytrangbi.NgayBatDauTrangBi = dtNgayBatDauTrangBi.Value;
+                quanlytrangbi.NgayKetThucTrangBi = dtNgayKetThucTrangBi.Value;
+                data.SaveChanges();
+                LoadData();
+                MessageBox.Show("Update thành công", "Thông báo");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

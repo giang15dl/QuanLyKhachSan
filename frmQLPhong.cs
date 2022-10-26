@@ -212,7 +212,16 @@ namespace QLKhachSan
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-
+            if (ValidateInputData())
+            {
+                data = new QLKSEntities();
+                var phong = data.tPhongs.Where(x => x.SoPhong == txtSoPhong.Text.Trim()).FirstOrDefault();
+                phong.GiaTien = int.Parse(txtGiaTien.Text.Trim());
+                phong.ConSuDung = cboConSuDung.SelectedValue.ToString();
+                data.SaveChanges();
+                LoadData();
+                MessageBox.Show("Update thành công", "Thông báo");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

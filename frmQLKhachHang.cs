@@ -131,6 +131,11 @@ namespace QLKhachSan
         private bool ValidateInputData()
         {
             data = new QLKSEntities();
+            if (txtTenKhach.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Tên Khách hàng trống!", "Thông báo");
+                return false;
+            }
 
             if (txtSoCMND.Text.Trim().Length == 0)
             {
@@ -191,7 +196,17 @@ namespace QLKhachSan
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-
+            data = new QLKSEntities();
+            if (ValidateInputData())
+            {
+                var kh = data.tKhaches.Where(x => x.MaKhach == txtMaKhach.Text.Trim()).FirstOrDefault();
+                kh.TenKhach = txtTenKhach.Text.Trim();
+                kh.SoCMND = txtSoCMND.Text.Trim();
+                kh.DienThoai = txtDienThoai.Text.Trim();
+                data.SaveChanges();
+                LoadData();
+                MessageBox.Show("Update thành công", "Thông báo");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

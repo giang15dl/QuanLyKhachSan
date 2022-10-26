@@ -232,7 +232,18 @@ namespace QLKhachSan
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
-
+            if (ValidateInputData())
+            {
+                data = new QLKSEntities();
+                var thietbi = data.tThietBis.Where(x => x.MaThietBi == txtMaThietBi.Text.Trim()).FirstOrDefault();
+                thietbi.TenThietBi = txtTenThietBi.Text.Trim();
+                thietbi.NgayMua = dtNgayMua.Value;
+                thietbi.GiaMua = int.Parse(txtGiaMua.Text.Trim());
+                thietbi.TinhTrang = cboTinhNang.SelectedValue.ToString();
+                data.SaveChanges();
+                LoadData();
+                MessageBox.Show("Update thành công", "Thông báo");
+            }
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
