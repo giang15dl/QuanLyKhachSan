@@ -217,11 +217,6 @@ namespace QLKhachSan
 
         }
 
-        private void btnThongKe_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnThongTin_Click(object sender, EventArgs e)
         {
 
@@ -242,6 +237,43 @@ namespace QLKhachSan
                 {
                     frm.Close();
                 }
+            }
+        }
+
+        private void btnBaoCao_Click(object sender, EventArgs e)
+        {
+            List<Form> openForms = new List<Form>();
+
+            foreach (Form t in Application.OpenForms)
+            {
+                openForms.Add(t);
+            }
+
+            bool present = false;
+            foreach (Form frm in openForms)
+            {
+                if (frm.Name == "frmBaoCao")
+                {
+                    present = true;
+                }
+            }
+
+            if (!present)
+            {
+                List<Form> _openForms = new List<Form>();
+
+                foreach (Form t in Application.OpenForms)
+                    _openForms.Add(t);
+
+                foreach (Form t in _openForms)
+                {
+                    if (t.Name != "frmMain")
+                        t.Close();
+                }
+
+                frmBaoCao f = new frmBaoCao();
+                f.MdiParent = this;
+                f.Show();
             }
         }
     }

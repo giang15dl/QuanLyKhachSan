@@ -33,7 +33,7 @@ namespace QLKhachSan
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnThoat = new System.Windows.Forms.Button();
             this.btnThongTin = new System.Windows.Forms.Button();
-            this.btnThongKe = new System.Windows.Forms.Button();
+            this.btnBaoCao = new System.Windows.Forms.Button();
             this.btnQLNhanVien = new System.Windows.Forms.Button();
             this.btnQLTrangBi = new System.Windows.Forms.Button();
             this.btnQLThietBi = new System.Windows.Forms.Button();
@@ -49,7 +49,7 @@ namespace QLKhachSan
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.Controls.Add(this.btnThoat);
             this.panelMenu.Controls.Add(this.btnThongTin);
-            this.panelMenu.Controls.Add(this.btnThongKe);
+            this.panelMenu.Controls.Add(this.btnBaoCao);
             this.panelMenu.Controls.Add(this.btnQLNhanVien);
             this.panelMenu.Controls.Add(this.btnQLTrangBi);
             this.panelMenu.Controls.Add(this.btnQLThietBi);
@@ -105,26 +105,26 @@ namespace QLKhachSan
             this.btnThongTin.UseVisualStyleBackColor = false;
             this.btnThongTin.Click += new System.EventHandler(this.btnThongTin_Click);
             // 
-            // btnThongKe
+            // btnBaoCao
             // 
-            this.btnThongKe.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.btnThongKe.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnThongKe.FlatAppearance.BorderSize = 0;
-            this.btnThongKe.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnThongKe.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.btnThongKe.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnThongKe.Image = global::QLKhachSan.Properties.Resources.chart_64_icon;
-            this.btnThongKe.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThongKe.Location = new System.Drawing.Point(0, 637);
-            this.btnThongKe.Name = "btnThongKe";
-            this.btnThongKe.Padding = new System.Windows.Forms.Padding(12, 0, 0, 5);
-            this.btnThongKe.Size = new System.Drawing.Size(320, 91);
-            this.btnThongKe.TabIndex = 7;
-            this.btnThongKe.Text = "   Thống kê";
-            this.btnThongKe.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnThongKe.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnThongKe.UseVisualStyleBackColor = false;
-            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
+            this.btnBaoCao.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.btnBaoCao.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBaoCao.FlatAppearance.BorderSize = 0;
+            this.btnBaoCao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btnBaoCao.ForeColor = System.Drawing.Color.Gainsboro;
+            this.btnBaoCao.Image = global::QLKhachSan.Properties.Resources.chart_64_icon;
+            this.btnBaoCao.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoCao.Location = new System.Drawing.Point(0, 637);
+            this.btnBaoCao.Name = "btnBaoCao";
+            this.btnBaoCao.Padding = new System.Windows.Forms.Padding(12, 0, 0, 5);
+            this.btnBaoCao.Size = new System.Drawing.Size(320, 91);
+            this.btnBaoCao.TabIndex = 7;
+            this.btnBaoCao.Text = "   Báo cáo";
+            this.btnBaoCao.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnBaoCao.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btnBaoCao.UseVisualStyleBackColor = false;
+            this.btnBaoCao.Click += new System.EventHandler(this.btnBaoCao_Click);
             // 
             // btnQLNhanVien
             // 
@@ -290,7 +290,7 @@ namespace QLKhachSan
         private System.Windows.Forms.Button btnQLThietBi;
         private System.Windows.Forms.Button btnQLPhong;
         private System.Windows.Forms.Button btnQLKhachHang;
-        private System.Windows.Forms.Button btnThongKe;
+        private System.Windows.Forms.Button btnBaoCao;
         private System.Windows.Forms.Button btnThongTin;
         private System.Windows.Forms.Button btnThoat;
     }
