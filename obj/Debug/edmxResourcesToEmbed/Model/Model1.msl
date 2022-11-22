@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="QLKSModelStoreContainer" CdmEntityContainer="QLKSEntities">
+    <EntitySetMapping Name="tDichVus">
+      <EntityTypeMapping TypeName="QLKSModel.tDichVu">
+        <MappingFragment StoreEntitySet="tDichVu">
+          <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
+          <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
+          <ScalarProperty Name="GiaDichVu" ColumnName="GiaDichVu" />
+          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tHoaDons">
+      <EntityTypeMapping TypeName="QLKSModel.tHoaDon">
+        <MappingFragment StoreEntitySet="tHoaDon">
+          <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+          <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
+          <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
+          <ScalarProperty Name="NgayTraPhong" ColumnName="NgayTraPhong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tKhaches">
+      <EntityTypeMapping TypeName="QLKSModel.tKhach">
+        <MappingFragment StoreEntitySet="tKhach">
+          <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
+          <ScalarProperty Name="TenKhach" ColumnName="TenKhach" />
+          <ScalarProperty Name="SoCMND" ColumnName="SoCMND" />
+          <ScalarProperty Name="DienThoai" ColumnName="DienThoai" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tPhongs">
+      <EntityTypeMapping TypeName="QLKSModel.tPhong">
+        <MappingFragment StoreEntitySet="tPhong">
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
+          <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
+          <ScalarProperty Name="ConSuDung" ColumnName="ConSuDung" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tThietBis">
+      <EntityTypeMapping TypeName="QLKSModel.tThietBi">
+        <MappingFragment StoreEntitySet="tThietBi">
+          <ScalarProperty Name="MaThietBi" ColumnName="MaThietBi" />
+          <ScalarProperty Name="TenThietBi" ColumnName="TenThietBi" />
+          <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
+          <ScalarProperty Name="GiaMua" ColumnName="GiaMua" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tThuePhongs">
+      <EntityTypeMapping TypeName="QLKSModel.tThuePhong">
+        <MappingFragment StoreEntitySet="tThuePhong">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
+          <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
+          <ScalarProperty Name="NgayNhanPhong" ColumnName="NgayNhanPhong" />
+          <ScalarProperty Name="NgayTraPhong" ColumnName="NgayTraPhong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tTrangBis">
+      <EntityTypeMapping TypeName="QLKSModel.tTrangBi">
+        <MappingFragment StoreEntitySet="tTrangBi">
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
+          <ScalarProperty Name="MaThietBi" ColumnName="MaThietBi" />
+          <ScalarProperty Name="NgayBatDauTrangBi" ColumnName="NgayBatDauTrangBi" />
+          <ScalarProperty Name="NgayKetThucTrangBi" ColumnName="NgayKetThucTrangBi" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tNhanViens">
+      <EntityTypeMapping TypeName="QLKSModel.tNhanVien">
+        <MappingFragment StoreEntitySet="tNhanVien">
+          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+          <ScalarProperty Name="PassW" ColumnName="PassW" />
+          <ScalarProperty Name="UserN" ColumnName="UserN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

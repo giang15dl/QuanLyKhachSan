@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLKSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tDichVu">
+    <Key>
+      <PropertyRef Name="MaDichVu" />
+    </Key>
+    <Property Name="MaDichVu" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TenDichVu" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="GiaDichVu" Type="int" Nullable="false" />
+    <Property Name="SoLuong" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tHoaDon">
+    <Key>
+      <PropertyRef Name="MaHoaDon" />
+    </Key>
+    <Property Name="MaHoaDon" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="MaKhach" Type="char" MaxLength="4" />
+    <Property Name="MaDichVu" Type="char" MaxLength="4" />
+    <Property Name="SoPhong" Type="char" MaxLength="4" />
+    <Property Name="NgayTraPhong" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tKhach">
+    <Key>
+      <PropertyRef Name="MaKhach" />
+    </Key>
+    <Property Name="MaKhach" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TenKhach" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="SoCMND" Type="char" MaxLength="15" Nullable="false" />
+    <Property Name="DienThoai" Type="char" MaxLength="11" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tNhanVien">
+    <Key>
+      <PropertyRef Name="UserN" />
+    </Key>
+    <Property Name="UserN" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="PassW" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="TenNhanVien" Type="nvarchar" MaxLength="30" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tPhong">
+    <Key>
+      <PropertyRef Name="SoPhong" />
+    </Key>
+    <Property Name="SoPhong" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="GiaTien" Type="int" Nullable="false" />
+    <Property Name="ConSuDung" Type="char" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tThietBi">
+    <Key>
+      <PropertyRef Name="MaThietBi" />
+    </Key>
+    <Property Name="MaThietBi" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="TenThietBi" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="NgayMua" Type="datetime" Nullable="false" />
+    <Property Name="GiaMua" Type="int" Nullable="false" />
+    <Property Name="TinhTrang" Type="char" MaxLength="3" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tThuePhong">
+    <Key>
+      <PropertyRef Name="STT" />
+      <PropertyRef Name="SoPhong" />
+      <PropertyRef Name="MaKhach" />
+    </Key>
+    <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SoPhong" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="MaKhach" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="NgayNhanPhong" Type="datetime" Nullable="false" />
+    <Property Name="NgayTraPhong" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="tTrangBi">
+    <Key>
+      <PropertyRef Name="SoPhong" />
+      <PropertyRef Name="MaThietBi" />
+    </Key>
+    <Property Name="SoPhong" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="MaThietBi" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="NgayBatDauTrangBi" Type="datetime" Nullable="false" />
+    <Property Name="NgayKetThucTrangBi" Type="datetime" Nullable="false" />
+  </EntityType>
+  <Association Name="thd_fk_madichvu">
+    <End Role="tDichVu" Type="Self.tDichVu" Multiplicity="0..1" />
+    <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tDichVu">
+        <PropertyRef Name="MaDichVu" />
+      </Principal>
+      <Dependent Role="tHoaDon">
+        <PropertyRef Name="MaDichVu" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="thd_fk_makhach">
+    <End Role="tKhach" Type="Self.tKhach" Multiplicity="0..1" />
+    <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tKhach">
+        <PropertyRef Name="MaKhach" />
+      </Principal>
+      <Dependent Role="tHoaDon">
+        <PropertyRef Name="MaKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="thd_fk_sophong">
+    <End Role="tPhong" Type="Self.tPhong" Multiplicity="0..1" />
+    <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tPhong">
+        <PropertyRef Name="SoPhong" />
+      </Principal>
+      <Dependent Role="tHoaDon">
+        <PropertyRef Name="SoPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ttb_fk_matb">
+    <End Role="tThietBi" Type="Self.tThietBi" Multiplicity="1" />
+    <End Role="tTrangBi" Type="Self.tTrangBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tThietBi">
+        <PropertyRef Name="MaThietBi" />
+      </Principal>
+      <Dependent Role="tTrangBi">
+        <PropertyRef Name="MaThietBi" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ttb_fk_sophong">
+    <End Role="tPhong" Type="Self.tPhong" Multiplicity="1" />
+    <End Role="tTrangBi" Type="Self.tTrangBi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tPhong">
+        <PropertyRef Name="SoPhong" />
+      </Principal>
+      <Dependent Role="tTrangBi">
+        <PropertyRef Name="SoPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ttp_fk_makhach">
+    <End Role="tKhach" Type="Self.tKhach" Multiplicity="1" />
+    <End Role="tThuePhong" Type="Self.tThuePhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tKhach">
+        <PropertyRef Name="MaKhach" />
+      </Principal>
+      <Dependent Role="tThuePhong">
+        <PropertyRef Name="MaKhach" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ttp_fk_sophong">
+    <End Role="tPhong" Type="Self.tPhong" Multiplicity="1" />
+    <End Role="tThuePhong" Type="Self.tThuePhong" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tPhong">
+        <PropertyRef Name="SoPhong" />
+      </Principal>
+      <Dependent Role="tThuePhong">
+        <PropertyRef Name="SoPhong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLKSModelStoreContainer">
+    <EntitySet Name="tDichVu" EntityType="Self.tDichVu" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tHoaDon" EntityType="Self.tHoaDon" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tKhach" EntityType="Self.tKhach" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tNhanVien" EntityType="Self.tNhanVien" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tPhong" EntityType="Self.tPhong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tThietBi" EntityType="Self.tThietBi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tThuePhong" EntityType="Self.tThuePhong" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tTrangBi" EntityType="Self.tTrangBi" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="thd_fk_madichvu" Association="Self.thd_fk_madichvu">
+      <End Role="tDichVu" EntitySet="tDichVu" />
+      <End Role="tHoaDon" EntitySet="tHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="thd_fk_makhach" Association="Self.thd_fk_makhach">
+      <End Role="tKhach" EntitySet="tKhach" />
+      <End Role="tHoaDon" EntitySet="tHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="thd_fk_sophong" Association="Self.thd_fk_sophong">
+      <End Role="tPhong" EntitySet="tPhong" />
+      <End Role="tHoaDon" EntitySet="tHoaDon" />
+    </AssociationSet>
+    <AssociationSet Name="ttb_fk_matb" Association="Self.ttb_fk_matb">
+      <End Role="tThietBi" EntitySet="tThietBi" />
+      <End Role="tTrangBi" EntitySet="tTrangBi" />
+    </AssociationSet>
+    <AssociationSet Name="ttb_fk_sophong" Association="Self.ttb_fk_sophong">
+      <End Role="tPhong" EntitySet="tPhong" />
+      <End Role="tTrangBi" EntitySet="tTrangBi" />
+    </AssociationSet>
+    <AssociationSet Name="ttp_fk_makhach" Association="Self.ttp_fk_makhach">
+      <End Role="tKhach" EntitySet="tKhach" />
+      <End Role="tThuePhong" EntitySet="tThuePhong" />
+    </AssociationSet>
+    <AssociationSet Name="ttp_fk_sophong" Association="Self.ttp_fk_sophong">
+      <End Role="tPhong" EntitySet="tPhong" />
+      <End Role="tThuePhong" EntitySet="tThuePhong" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
