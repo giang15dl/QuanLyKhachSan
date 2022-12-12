@@ -12,7 +12,6 @@
           <Property Name="MaDichVu" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="TenDichVu" Type="nvarchar" MaxLength="30" Nullable="false" />
           <Property Name="GiaDichVu" Type="int" Nullable="false" />
-          <Property Name="SoLuong" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="tHoaDon">
           <Key>
@@ -27,6 +26,7 @@
           <Property Name="MaDichVu" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="Soluong" Type="int" />
           <Property Name="ThanhTien" Type="float" />
+          <Property Name="DaThanhToan" Type="char" MaxLength="3" Nullable="false" />
         </EntityType>
         <EntityType Name="tKhach">
           <Key>
@@ -207,7 +207,6 @@
           <Property Name="MaDichVu" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="TenDichVu" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="GiaDichVu" Type="Int32" Nullable="false" />
-          <Property Name="SoLuong" Type="Int32" Nullable="false" />
           <NavigationProperty Name="tHoaDons" Relationship="Self.thd_fk_madichvu" FromRole="tDichVu" ToRole="tHoaDon" />
         </EntityType>
         <EntityType Name="tHoaDon">
@@ -223,6 +222,7 @@
           <Property Name="MaDichVu" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="Soluong" Type="Int32" />
           <Property Name="ThanhTien" Type="Double" />
+          <Property Name="DaThanhToan" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
           <NavigationProperty Name="tDichVu" Relationship="Self.thd_fk_madichvu" FromRole="tHoaDon" ToRole="tDichVu" />
           <NavigationProperty Name="tThuePhong" Relationship="Self.thd_fk_thuephong" FromRole="tHoaDon" ToRole="tThuePhong" />
         </EntityType>
@@ -414,7 +414,6 @@
                 <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
                 <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
                 <ScalarProperty Name="GiaDichVu" ColumnName="GiaDichVu" />
-                <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -427,6 +426,7 @@
                 <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
                 <ScalarProperty Name="Soluong" ColumnName="Soluong" />
                 <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+                <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -140,6 +140,29 @@
   <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>25</value>
   </metadata>
+  <data name="barButtonItem1.ImageOptions.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAAAOwAAADsAXkocb0AAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
+        AAAD3ElEQVRYR6VXS08TURTuTk3UnYnGnVF3mhDtNA2JNm2NAYWwAVuiK/CxUqPxBaJQQA3gRhORhxp0
+        6Rv1B7jxUZFg/AcQF0BcyDz7SK/nnN4Zemduh5Z+yRdm7nn2nnPPXAKV4m9DaKsWVZJqTJnQYkoanpfg
+        b5ZYfE6r0dC4Ggslluvrt3Cz2rESU/aC8ydAHcgqJOpO/jsS2sPdVA8WDm/SYqERcJQrcVwtcYeGWCSy
+        kbutDJg5bOtvl7N1E8r2VT96YAd37w89frCO11TqrAYuwI7u52Hk4L+8suDxEMuMP2SZsQf0LNXxckGL
+        BLfzcCKwTqAw5zJwqLc1MvPSOefdOHuK2TDOnHTWUQd17XcP48oM9hcPuwrecFIja2SAFQyDglmDPbRm
+        nO+kdwQ+kx7IEAVdZ9ZQSvBRSjUW7ONhi+BHTdrt2akJckooFJh5/QKtyxIwuy6Sjo3MszHBl009pqhC
+        KWARz7lH0bo/yF3hr9KY1XvNkckSIBvQwR2wUW4n9KjyiILThJMMGb292dn2gqYyoyMhyMslQLKOJCWM
+        wGT0RJMg59RoYkLXJyVClvv0jhwgrL7rHrlfAkgr1cWljOU+vPHIkdALJwJ8tgsCvSkCUS0yzs/9FGQ2
+        10oAmf81W1SwTKYfP+yRQwJjWP+0W2DeulI0BFj93YLMZiUJWAPdXIMxs+eyR44TEhNYdguyzye5GWN6
+        q/xMG6fbuQYkADWX6eA8sJGZGpfpLGICGdciy02/LlpBGfymHJ4SnBEyGRFs7VJmp1/JdCx5AtA0CDwF
+        blm1tE+SXwLeErwoKUFLTJBVQ70lzr34l8C/CVM3BFk1xAa2Yd4s04R4jXILhGM4812QVcP87A/ywUwo
+        5THZMVQewxwIJdwCZOkgkh2htWjevsqtfQZRVGkNLEUim+FFcwuFUayueEaxH41OGMUwvsnWZxRjbPoe
+        wMukS0i0hvvJCQKTqGQn8JfbwRHWvV6pHpaegiPoJlS8QHoUsXtLkZ9N05zHDrd18Bkbzqk5R+bpqOCr
+        hBkrHtzFwxcBi0MuJYfWcEr4xDqA5iK6QBeSMr+cGA3d5WFXgVcyPBZSA6CebGa5j29hT00eRgJIBqdo
+        mZoTIcYX1rB7Aw8rAm8poDTvNhIIxwl7AW87ON2y71/SM53zxkNyG4fBP0Y0vJOHkwOvzqAMV2iZg5o4
+        r8XD+3gYf6gNddvA4LPLwbqJ2172Ol4OWCe8vYIDz4yogvChC94pW/NKgJnjBRKcVZOIhrcdz1GrBTi1
+        8A6H8xv+ufgGQRaB+ClHLuKaGldG1XiwzZlwayIQ+A8LotI3eydIFQAAAABJRU5ErkJggg==
+</value>
+  </data>
   <metadata name="fluentFormDefaultManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>

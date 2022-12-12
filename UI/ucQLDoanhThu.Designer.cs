@@ -1,7 +1,7 @@
 ﻿
 namespace QLKhachSan.UI
 {
-    partial class ucDoanhThuChiTiet
+    partial class ucQLDoanhThu
     {
         /// <summary> 
         /// Required designer variable.

@@ -22,13 +22,13 @@ namespace QLKhachSan
             OpenLoginFormOnClose = false;
             //Application.Run(new frmBill());
             //Application.Run(new frmLogin2());
-            Application.Run(new MainForm());
-            /*Application.Run(new frmLogin());
+            //Application.Run(new MainForm());
+            Application.Run(new frmLogin());
             
             if (OpenLoginFormOnClose)
             {
                 Application.Run(new MainForm());
-            }*/
+            }
         }
     }
 }

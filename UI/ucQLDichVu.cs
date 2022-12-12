@@ -36,7 +36,6 @@ namespace QLKhachSan.UI
 
             txtGiaDichVu.Text = "";
 
-            txtSoLuong.Text = "";
 
             this.ActiveControl = txtTenDichVu;
 
@@ -59,7 +58,6 @@ namespace QLKhachSan.UI
                               MaDichVu = t.MaDichVu,
                               TenDichVu = t.TenDichVu,
                               GiaDichVu = t.GiaDichVu,
-                              SoLuong = t.SoLuong,
                           };
             gcDichVu.DataSource = columns.ToList();
         }
@@ -91,7 +89,6 @@ namespace QLKhachSan.UI
             txtMaDichVu.Text = view.GetFocusedRowCellValue(colMaDichVu).ToString();
             txtTenDichVu.Text = view.GetFocusedRowCellValue(colTenDichVu).ToString();
             txtGiaDichVu.Text = view.GetFocusedRowCellValue(colGiaDichVu).ToString();
-            txtSoLuong.Text = view.GetFocusedRowCellValue(colSoLuong).ToString();
 
             btnThem.Enabled = false;
             btnSua.Enabled = true;
@@ -109,7 +106,6 @@ namespace QLKhachSan.UI
                     MaDichVu = autoGenarateMaDichVu(),
                     TenDichVu = txtTenDichVu.Text.Trim(),
                     GiaDichVu = int.Parse(txtGiaDichVu.Text.Trim()),
-                    SoLuong = int.Parse(txtSoLuong.Text.Trim())
                 };
                 data.tDichVus.Add(dichvu);
                 data.SaveChanges();
@@ -175,12 +171,6 @@ namespace QLKhachSan.UI
                 return false;
             }
 
-            if (txtSoLuong.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Số lượng trống!", "Thông báo");
-                return false;
-            }
-
             return true;
         }
 
@@ -192,7 +182,6 @@ namespace QLKhachSan.UI
                 var dv = data.tDichVus.Where(x => x.MaDichVu == txtMaDichVu.Text.Trim()).FirstOrDefault();
                 dv.TenDichVu = txtTenDichVu.Text.Trim();
                 dv.GiaDichVu = int.Parse(txtGiaDichVu.Text.Trim());
-                dv.SoLuong = int.Parse(txtSoLuong.Text.Trim());
                 data.SaveChanges();
                 LoadData();
                 MessageBox.Show("Sửa thành công", "Thông báo");
@@ -242,7 +231,6 @@ namespace QLKhachSan.UI
             txtMaDichVu.Text = "";
             txtTenDichVu.Text = "";
             txtGiaDichVu.Text = "";
-            txtSoLuong.Text = "";
 
             this.ActiveControl = txtTenDichVu;
 

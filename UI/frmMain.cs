@@ -19,9 +19,8 @@ namespace QLKhachSan
         ucQLPhong uc_QLPhong;
         ucQLThietBi uc_QLThietBi;
         ucQLDichVu uc_QLDichVu;
-        ucThongKeDichVuDaBan uc_ThongKeDichVuDaBan;
         ucQLKhachHang uc_QLKhachHang;
-        ucDoanhThuChiTiet uc_DoanhThuChiTiet;
+        ucQLDoanhThu uc_DoanhThuChiTiet;
         ucDanhSachHoaDon uc_DanhSachHoaDon;
         ucBaoCao uc_BaoCao;
         ucQLTrangBi uc_QLTrangBi;
@@ -98,19 +97,13 @@ namespace QLKhachSan
             this.itemNav.Caption = "Dịch vụ / Quản lý dịch vụ";
         }
 
-        private async void menuThongKeDichVuDaBan_Click(object sender, EventArgs e)
-        {
-            await LoadModuleAsync("uc_ThongKeDichVuDaBan");
-            this.itemNav.Caption = "Dịch vụ / Thống kê dịch vụ đã bán";
-        }
-
         private async void menuQuanLyKhachHang_Click(object sender, EventArgs e)
         {
             await LoadModuleAsync("uc_QLKhachHang");
             this.itemNav.Caption = "Khách hàng / Quản lý khách hàng";
         }
 
-        private async void menuDoanhThuChiTiet_Click(object sender, EventArgs e)
+        private async void menuQuanLyDoanhThu_Click(object sender, EventArgs e)
         {
             await LoadModuleAsync("uc_DoanhThuChiTiet");
             this.itemNav.Caption = "Doanh thu / Doanh thu chi tiết";
@@ -260,36 +253,6 @@ namespace QLKhachSan
                     }
                 });
             }
-            else if (name.Equals("uc_ThongKeDichVuDaBan"))
-            {
-                await Task.Factory.StartNew(() =>
-                {
-                    if (!mainContainer.Controls.Contains(uc_ThongKeDichVuDaBan))
-                    {
-                        uc_ThongKeDichVuDaBan = new ucThongKeDichVuDaBan();
-                        if (uc_ThongKeDichVuDaBan != null)
-                        {
-                            uc_ThongKeDichVuDaBan.Dock = DockStyle.Fill;
-                            mainContainer.Invoke(new MethodInvoker(delegate ()
-                            {
-                                mainContainer.Controls.Add(uc_ThongKeDichVuDaBan);
-                                uc_ThongKeDichVuDaBan.BringToFront();
-                            }));
-                        }
-                    }
-                    else
-                    {
-                        var temp = mainContainer.Controls.Find(uc_ThongKeDichVuDaBan.Name, true);
-                        if (temp.Length == 1)
-                        {
-                            mainContainer.Invoke(new MethodInvoker(delegate ()
-                            {
-                                temp[0].BringToFront();
-                            }));
-                        }
-                    }
-                });
-            }
             else if (name.Equals("uc_QLKhachHang"))
             {
                 await Task.Factory.StartNew(() =>
@@ -326,7 +289,7 @@ namespace QLKhachSan
                 {
                     if (!mainContainer.Controls.Contains(uc_DoanhThuChiTiet))
                     {
-                        uc_DoanhThuChiTiet = new ucDoanhThuChiTiet();
+                        uc_DoanhThuChiTiet = new ucQLDoanhThu();
                         if (uc_DoanhThuChiTiet != null)
                         {
                             uc_DoanhThuChiTiet.Dock = DockStyle.Fill;
@@ -410,6 +373,11 @@ namespace QLKhachSan
                     }
                 });
             }
+        }
+
+        private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

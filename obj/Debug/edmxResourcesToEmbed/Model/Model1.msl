@@ -7,7 +7,6 @@
           <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
           <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
           <ScalarProperty Name="GiaDichVu" ColumnName="GiaDichVu" />
-          <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -20,6 +19,7 @@
           <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
           <ScalarProperty Name="Soluong" ColumnName="Soluong" />
           <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
+          <ScalarProperty Name="DaThanhToan" ColumnName="DaThanhToan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

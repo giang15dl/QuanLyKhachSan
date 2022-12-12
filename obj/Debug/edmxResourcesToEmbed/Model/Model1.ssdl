@@ -7,7 +7,6 @@
     <Property Name="MaDichVu" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="TenDichVu" Type="nvarchar" MaxLength="30" Nullable="false" />
     <Property Name="GiaDichVu" Type="int" Nullable="false" />
-    <Property Name="SoLuong" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="tHoaDon">
     <Key>
@@ -22,6 +21,7 @@
     <Property Name="MaDichVu" Type="char" MaxLength="4" Nullable="false" />
     <Property Name="Soluong" Type="int" />
     <Property Name="ThanhTien" Type="float" />
+    <Property Name="DaThanhToan" Type="char" MaxLength="3" Nullable="false" />
   </EntityType>
   <EntityType Name="tKhach">
     <Key>

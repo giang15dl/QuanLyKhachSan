@@ -10,14 +10,14 @@ using System.Windows.Forms;
 
 namespace QLKhachSan.UI
 {
-    public partial class ucThongKeDichVuDaBan : UserControl
+    public partial class ucQLDoanhThu : UserControl
     {
-        public ucThongKeDichVuDaBan()
+        public ucQLDoanhThu()
         {
             InitializeComponent();
         }
 
-        private void ucThongKeDichVuDaBan_Load(object sender, EventArgs e)
+        private void ucDoanhThuChiTiet_Load(object sender, EventArgs e)
         {
 
         }

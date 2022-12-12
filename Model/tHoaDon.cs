@@ -20,6 +20,7 @@ namespace QLKhachSan.Model
         public string MaDichVu { get; set; }
         public Nullable<int> Soluong { get; set; }
         public Nullable<double> ThanhTien { get; set; }
+        public string DaThanhToan { get; set; }
     
         public virtual tDichVu tDichVu { get; set; }
         public virtual tThuePhong tThuePhong { get; set; }

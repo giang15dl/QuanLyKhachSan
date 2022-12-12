@@ -39,11 +39,10 @@ namespace QLKhachSan
             this.menuQuanLyTrangBi = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuDichVu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuQuanLyDichVu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.menuThongKeDichVuDaBan = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuKhachHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuQuanLyKhachHang = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuDoanhThu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.menuDoanhThuChiTiet = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.menuQuanLyDoanhThu = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuThongKe = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuDanhSachHoaDon = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuBaoCao = new DevExpress.XtraBars.Navigation.AccordionControlElement();
@@ -57,6 +56,7 @@ namespace QLKhachSan
             this.menuHuongDanCaiDat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.itemNav = new DevExpress.XtraBars.BarStaticItem();
+            this.barButtonItem1 = new DevExpress.XtraBars.BarButtonItem();
             this.fluentFormDefaultManager1 = new DevExpress.XtraBars.FluentDesignSystem.FluentFormDefaultManager(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.accordionControl1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.fluentDesignFormControl1)).BeginInit();
@@ -67,9 +67,9 @@ namespace QLKhachSan
             // 
             this.mainContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer.Location = new System.Drawing.Point(287, 39);
+            this.mainContainer.Location = new System.Drawing.Point(353, 54);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(569, 631);
+            this.mainContainer.Size = new System.Drawing.Size(503, 616);
             this.mainContainer.TabIndex = 0;
             // 
             // accordionControl1
@@ -84,10 +84,10 @@ namespace QLKhachSan
             this.menuNhanVien,
             this.menuHoTro,
             this.menuThongTinPhanMem});
-            this.accordionControl1.Location = new System.Drawing.Point(0, 39);
+            this.accordionControl1.Location = new System.Drawing.Point(0, 54);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(287, 631);
+            this.accordionControl1.Size = new System.Drawing.Size(353, 616);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -116,6 +116,7 @@ namespace QLKhachSan
             // 
             // menuQLThietBi
             // 
+            this.menuQLThietBi.ImageOptions.Image = global::QLKhachSan.Properties.Resources.thietbi;
             this.menuQLThietBi.Name = "menuQLThietBi";
             this.menuQLThietBi.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.menuQLThietBi.Text = "Quản lý thiết bị";
@@ -123,6 +124,7 @@ namespace QLKhachSan
             // 
             // menuQuanLyTrangBi
             // 
+            this.menuQuanLyTrangBi.ImageOptions.Image = global::QLKhachSan.Properties.Resources.trangbi;
             this.menuQuanLyTrangBi.Name = "menuQuanLyTrangBi";
             this.menuQuanLyTrangBi.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.menuQuanLyTrangBi.Text = "Quản lý trang bị";
@@ -131,8 +133,7 @@ namespace QLKhachSan
             // menuDichVu
             // 
             this.menuDichVu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.menuQuanLyDichVu,
-            this.menuThongKeDichVuDaBan});
+            this.menuQuanLyDichVu});
             this.menuDichVu.ImageOptions.Image = global::QLKhachSan.Properties.Resources.dichvu;
             this.menuDichVu.Name = "menuDichVu";
             this.menuDichVu.Text = "Dịch vụ";
@@ -144,14 +145,6 @@ namespace QLKhachSan
             this.menuQuanLyDichVu.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.menuQuanLyDichVu.Text = "Quản lý dịch vụ";
             this.menuQuanLyDichVu.Click += new System.EventHandler(this.menuQuanLyDichVu_Click);
-            // 
-            // menuThongKeDichVuDaBan
-            // 
-            this.menuThongKeDichVuDaBan.ImageOptions.Image = global::QLKhachSan.Properties.Resources.thongkedichvudaban;
-            this.menuThongKeDichVuDaBan.Name = "menuThongKeDichVuDaBan";
-            this.menuThongKeDichVuDaBan.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.menuThongKeDichVuDaBan.Text = "Thống kê dịch vụ đã bán";
-            this.menuThongKeDichVuDaBan.Click += new System.EventHandler(this.menuThongKeDichVuDaBan_Click);
             // 
             // menuKhachHang
             // 
@@ -172,17 +165,18 @@ namespace QLKhachSan
             // menuDoanhThu
             // 
             this.menuDoanhThu.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.menuDoanhThuChiTiet});
+            this.menuQuanLyDoanhThu});
             this.menuDoanhThu.ImageOptions.Image = global::QLKhachSan.Properties.Resources.doanhthu;
             this.menuDoanhThu.Name = "menuDoanhThu";
             this.menuDoanhThu.Text = "Doanh thu";
             // 
-            // menuDoanhThuChiTiet
+            // menuQuanLyDoanhThu
             // 
-            this.menuDoanhThuChiTiet.Name = "menuDoanhThuChiTiet";
-            this.menuDoanhThuChiTiet.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.menuDoanhThuChiTiet.Text = "Doanh thu chi tiết";
-            this.menuDoanhThuChiTiet.Click += new System.EventHandler(this.menuDoanhThuChiTiet_Click);
+            this.menuQuanLyDoanhThu.ImageOptions.Image = global::QLKhachSan.Properties.Resources.quanlydoanhthu;
+            this.menuQuanLyDoanhThu.Name = "menuQuanLyDoanhThu";
+            this.menuQuanLyDoanhThu.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.menuQuanLyDoanhThu.Text = "Quản lý Doanh thu";
+            this.menuQuanLyDoanhThu.Click += new System.EventHandler(this.menuQuanLyDoanhThu_Click);
             // 
             // menuThongKe
             // 
@@ -275,14 +269,16 @@ namespace QLKhachSan
             this.fluentDesignFormControl1.FluentDesignForm = this;
             this.fluentDesignFormControl1.Font = new System.Drawing.Font("Tahoma", 7.8F);
             this.fluentDesignFormControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.itemNav});
+            this.itemNav,
+            this.barButtonItem1});
             this.fluentDesignFormControl1.Location = new System.Drawing.Point(0, 0);
             this.fluentDesignFormControl1.Manager = this.fluentFormDefaultManager1;
             this.fluentDesignFormControl1.Name = "fluentDesignFormControl1";
-            this.fluentDesignFormControl1.Size = new System.Drawing.Size(856, 39);
+            this.fluentDesignFormControl1.Size = new System.Drawing.Size(856, 54);
             this.fluentDesignFormControl1.TabIndex = 2;
             this.fluentDesignFormControl1.TabStop = false;
             this.fluentDesignFormControl1.TitleItemLinks.Add(this.itemNav);
+            this.fluentDesignFormControl1.TitleItemLinks.Add(this.barButtonItem1);
             // 
             // itemNav
             // 
@@ -292,12 +288,25 @@ namespace QLKhachSan
             this.itemNav.ItemAppearance.Normal.Options.UseFont = true;
             this.itemNav.Name = "itemNav";
             // 
+            // barButtonItem1
+            // 
+            this.barButtonItem1.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
+            this.barButtonItem1.Caption = "Thoát";
+            this.barButtonItem1.Id = 1;
+            this.barButtonItem1.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barButtonItem1.ImageOptions.Image")));
+            this.barButtonItem1.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
+            this.barButtonItem1.ItemAppearance.Normal.Options.UseFont = true;
+            this.barButtonItem1.Name = "barButtonItem1";
+            this.barButtonItem1.PaintStyle = DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph;
+            this.barButtonItem1.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barButtonItem1_ItemClick);
+            // 
             // fluentFormDefaultManager1
             // 
             this.fluentFormDefaultManager1.Form = this;
             this.fluentFormDefaultManager1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.itemNav});
-            this.fluentFormDefaultManager1.MaxItemId = 1;
+            this.itemNav,
+            this.barButtonItem1});
+            this.fluentFormDefaultManager1.MaxItemId = 2;
             // 
             // MainForm
             // 
@@ -343,14 +352,14 @@ namespace QLKhachSan
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuThongTinPhanMem;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuLienHeNhaPhatTrien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuDoanhThu;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement menuDoanhThuChiTiet;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement menuQuanLyDoanhThu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuThongKe;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuDanhSachHoaDon;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuBaoCao;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuHuongDanCaiDat;
         private DevExpress.XtraBars.BarStaticItem itemNav;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuQLThietBi;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement menuThongKeDichVuDaBan;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuQuanLyTrangBi;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem1;
     }
 }

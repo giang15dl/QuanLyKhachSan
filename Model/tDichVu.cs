@@ -23,7 +23,6 @@ namespace QLKhachSan.Model
         public string MaDichVu { get; set; }
         public string TenDichVu { get; set; }
         public int GiaDichVu { get; set; }
-        public int SoLuong { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tHoaDon> tHoaDons { get; set; }

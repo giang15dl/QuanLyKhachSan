@@ -215,8 +215,6 @@ E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLK
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucQLDichVu.resources
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucQLNhanVien.resources
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucQLThietBi.resources
-E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucDoanhThuChiTiet.resources
-E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucThongKeDichVuDaBan.resources
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucBaoCao.resources
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucDanhSachHoaDon.resources
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucQLTrangBi.resources
@@ -294,3 +292,4 @@ E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\de\
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\es\DevExpress.Diagram.v22.1.Core.resources.dll
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\ja\DevExpress.Diagram.v22.1.Core.resources.dll
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\Guna.UI2.dll
+E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucQLDoanhThu.resources

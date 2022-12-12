@@ -259,7 +259,7 @@ namespace QLKhachSan.UI
             // deNgayKetThucTrangBi
             // 
             this.deNgayKetThucTrangBi.EditValue = null;
-            this.deNgayKetThucTrangBi.Location = new System.Drawing.Point(231, 173);
+            this.deNgayKetThucTrangBi.Location = new System.Drawing.Point(236, 173);
             this.deNgayKetThucTrangBi.MaximumSize = new System.Drawing.Size(200, 0);
             this.deNgayKetThucTrangBi.MenuManager = this.barManager1;
             this.deNgayKetThucTrangBi.MinimumSize = new System.Drawing.Size(200, 0);
@@ -388,7 +388,7 @@ namespace QLKhachSan.UI
             // deNgayBatDauTrangBi
             // 
             this.deNgayBatDauTrangBi.EditValue = null;
-            this.deNgayBatDauTrangBi.Location = new System.Drawing.Point(231, 133);
+            this.deNgayBatDauTrangBi.Location = new System.Drawing.Point(236, 133);
             this.deNgayBatDauTrangBi.MaximumSize = new System.Drawing.Size(200, 0);
             this.deNgayBatDauTrangBi.MenuManager = this.barManager1;
             this.deNgayBatDauTrangBi.MinimumSize = new System.Drawing.Size(200, 0);
@@ -438,7 +438,7 @@ namespace QLKhachSan.UI
             this.layoutControlItem1.MaxSize = new System.Drawing.Size(0, 40);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(275, 40);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 5, 5, 5);
+            this.layoutControlItem1.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.layoutControlItem1.Size = new System.Drawing.Size(931, 40);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.Text = "Ngày bắt đầu trang bị:";
@@ -455,7 +455,7 @@ namespace QLKhachSan.UI
             this.layoutControlItem4.MaxSize = new System.Drawing.Size(0, 40);
             this.layoutControlItem4.MinSize = new System.Drawing.Size(275, 40);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 5, 5, 5);
+            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(5, 5, 5, 5);
             this.layoutControlItem4.Size = new System.Drawing.Size(931, 40);
             this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem4.Text = "Ngày kết thúc trang bị:";

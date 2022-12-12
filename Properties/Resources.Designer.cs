@@ -273,6 +273,16 @@ namespace QLKhachSan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap logout {
+            get {
+                object obj = ResourceManager.GetObject("logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap nhanvien {
             get {
                 object obj = ResourceManager.GetObject("nhanvien", resourceCulture);
@@ -316,6 +326,16 @@ namespace QLKhachSan.Properties {
         internal static System.Drawing.Bitmap qlks_background {
             get {
                 object obj = ResourceManager.GetObject("qlks-background", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap quanlydoanhthu {
+            get {
+                object obj = ResourceManager.GetObject("quanlydoanhthu", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -383,6 +403,16 @@ namespace QLKhachSan.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap thietbi {
+            get {
+                object obj = ResourceManager.GetObject("thietbi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap thoat_64_icon {
             get {
                 object obj = ResourceManager.GetObject("thoat-64_icon", resourceCulture);
@@ -406,6 +436,16 @@ namespace QLKhachSan.Properties {
         internal static System.Drawing.Bitmap thongkedichvudaban {
             get {
                 object obj = ResourceManager.GetObject("thongkedichvudaban", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trangbi {
+            get {
+                object obj = ResourceManager.GetObject("trangbi", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

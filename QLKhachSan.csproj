@@ -243,11 +243,11 @@
     <Compile Include="UI\ucDanhSachHoaDon.Designer.cs">
       <DependentUpon>ucDanhSachHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ucDoanhThuChiTiet.cs">
+    <Compile Include="UI\ucQLDoanhThu.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="UI\ucDoanhThuChiTiet.Designer.cs">
-      <DependentUpon>ucDoanhThuChiTiet.cs</DependentUpon>
+    <Compile Include="UI\ucQLDoanhThu.Designer.cs">
+      <DependentUpon>ucQLDoanhThu.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ucQLDichVu.cs">
       <SubType>UserControl</SubType>
@@ -298,12 +298,6 @@
     <Compile Include="UI\ucQLTrangBi.Designer.cs">
       <DependentUpon>ucQLTrangBi.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ucThongKeDichVuDaBan.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="UI\ucThongKeDichVuDaBan.Designer.cs">
-      <DependentUpon>ucThongKeDichVuDaBan.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\XtraReport1.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -328,8 +322,8 @@
     <EmbeddedResource Include="UI\ucDanhSachHoaDon.resx">
       <DependentUpon>ucDanhSachHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ucDoanhThuChiTiet.resx">
-      <DependentUpon>ucDoanhThuChiTiet.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ucQLDoanhThu.resx">
+      <DependentUpon>ucQLDoanhThu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ucQLDichVu.resx">
       <DependentUpon>ucQLDichVu.cs</DependentUpon>
@@ -363,9 +357,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ucQLTrangBi.resx">
       <DependentUpon>ucQLTrangBi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\ucThongKeDichVuDaBan.resx">
-      <DependentUpon>ucThongKeDichVuDaBan.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\XtraReport1.resx">
       <DependentUpon>XtraReport1.cs</DependentUpon>
@@ -450,6 +441,13 @@
     <None Include="Resources\password.png" />
     <None Include="Resources\login1.png" />
     <None Include="Resources\login2.png" />
+    <None Include="Resources\qlks-background.png" />
+    <None Include="Resources\username2.png" />
+    <None Include="Resources\thietbi.png" />
+    <None Include="Resources\trangbi.png" />
+    <None Include="Resources\quanlydoanhthu.png" />
+    <None Include="Resources\logout.png" />
+    <None Include="Resources\logout1.png" />
     <Content Include="Model\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -460,8 +458,6 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\qlks-background.png" />
-    <None Include="Resources\username2.png" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

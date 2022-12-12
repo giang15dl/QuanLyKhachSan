@@ -48,8 +48,6 @@ namespace QLKhachSan.UI
             this.colMaDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colTenDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colGiaDichVu = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.colSoLuong = new DevExpress.XtraGrid.Columns.GridColumn();
-            this.txtSoLuong = new DevExpress.XtraEditors.TextEdit();
             this.txtGiaDichVu = new DevExpress.XtraEditors.TextEdit();
             this.txtTenDichVu = new DevExpress.XtraEditors.TextEdit();
             this.txtMaDichVu = new DevExpress.XtraEditors.TextEdit();
@@ -58,7 +56,6 @@ namespace QLKhachSan.UI
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
@@ -67,7 +64,6 @@ namespace QLKhachSan.UI
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gcDichVu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDichVu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiaDichVu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenDichVu.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaDichVu.Properties)).BeginInit();
@@ -76,7 +72,6 @@ namespace QLKhachSan.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
@@ -193,7 +188,6 @@ namespace QLKhachSan.UI
             // layoutControl1
             // 
             this.layoutControl1.Controls.Add(this.gcDichVu);
-            this.layoutControl1.Controls.Add(this.txtSoLuong);
             this.layoutControl1.Controls.Add(this.txtGiaDichVu);
             this.layoutControl1.Controls.Add(this.txtTenDichVu);
             this.layoutControl1.Controls.Add(this.txtMaDichVu);
@@ -207,11 +201,11 @@ namespace QLKhachSan.UI
             // 
             // gcDichVu
             // 
-            this.gcDichVu.Location = new System.Drawing.Point(24, 270);
+            this.gcDichVu.Location = new System.Drawing.Point(24, 231);
             this.gcDichVu.MainView = this.gvDichVu;
             this.gcDichVu.MenuManager = this.barManager1;
             this.gcDichVu.Name = "gcDichVu";
-            this.gcDichVu.Size = new System.Drawing.Size(750, 272);
+            this.gcDichVu.Size = new System.Drawing.Size(750, 311);
             this.gcDichVu.TabIndex = 8;
             this.gcDichVu.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gvDichVu});
@@ -223,8 +217,7 @@ namespace QLKhachSan.UI
             this.colSTT,
             this.colMaDichVu,
             this.colTenDichVu,
-            this.colGiaDichVu,
-            this.colSoLuong});
+            this.colGiaDichVu});
             this.gvDichVu.GridControl = this.gcDichVu;
             this.gvDichVu.Name = "gvDichVu";
             this.gvDichVu.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
@@ -283,32 +276,6 @@ namespace QLKhachSan.UI
             this.colGiaDichVu.VisibleIndex = 3;
             this.colGiaDichVu.Width = 94;
             // 
-            // colSoLuong
-            // 
-            this.colSoLuong.AppearanceCell.Options.UseTextOptions = true;
-            this.colSoLuong.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
-            this.colSoLuong.Caption = "Số lượng";
-            this.colSoLuong.FieldName = "SoLuong";
-            this.colSoLuong.MinWidth = 25;
-            this.colSoLuong.Name = "colSoLuong";
-            this.colSoLuong.Visible = true;
-            this.colSoLuong.VisibleIndex = 4;
-            this.colSoLuong.Width = 121;
-            // 
-            // txtSoLuong
-            // 
-            this.txtSoLuong.Location = new System.Drawing.Point(138, 173);
-            this.txtSoLuong.MaximumSize = new System.Drawing.Size(300, 0);
-            this.txtSoLuong.MenuManager = this.barManager1;
-            this.txtSoLuong.MinimumSize = new System.Drawing.Size(300, 0);
-            this.txtSoLuong.Name = "txtSoLuong";
-            this.txtSoLuong.Properties.Appearance.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.txtSoLuong.Properties.Appearance.Options.UseFont = true;
-            this.txtSoLuong.Size = new System.Drawing.Size(300, 28);
-            this.txtSoLuong.StyleController = this.layoutControl1;
-            this.txtSoLuong.TabIndex = 7;
-            this.txtSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSoLuong_KeyPress);
-            // 
             // txtGiaDichVu
             // 
             this.txtGiaDichVu.Location = new System.Drawing.Point(138, 133);
@@ -366,11 +333,10 @@ namespace QLKhachSan.UI
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem2,
-            this.layoutControlItem3,
-            this.layoutControlItem4});
+            this.layoutControlItem3});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(778, 210);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(778, 170);
             this.layoutControlGroup1.Text = "Thông tin dịch vụ";
             // 
             // layoutControlItem1
@@ -424,30 +390,13 @@ namespace QLKhachSan.UI
             this.layoutControlItem3.Text = "Giá dịch vụ:";
             this.layoutControlItem3.TextSize = new System.Drawing.Size(104, 21);
             // 
-            // layoutControlItem4
-            // 
-            this.layoutControlItem4.AppearanceItemCaption.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.layoutControlItem4.AppearanceItemCaption.Options.UseFont = true;
-            this.layoutControlItem4.AppearanceItemCaption.Options.UseTextOptions = true;
-            this.layoutControlItem4.AppearanceItemCaption.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Far;
-            this.layoutControlItem4.Control = this.txtSoLuong;
-            this.layoutControlItem4.Location = new System.Drawing.Point(0, 120);
-            this.layoutControlItem4.MaxSize = new System.Drawing.Size(750, 40);
-            this.layoutControlItem4.MinSize = new System.Drawing.Size(750, 40);
-            this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Padding = new DevExpress.XtraLayout.Utils.Padding(0, 5, 5, 5);
-            this.layoutControlItem4.Size = new System.Drawing.Size(754, 40);
-            this.layoutControlItem4.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
-            this.layoutControlItem4.Text = "Số lượng:";
-            this.layoutControlItem4.TextSize = new System.Drawing.Size(104, 21);
-            // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem5});
-            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 220);
+            this.layoutControlGroup2.Location = new System.Drawing.Point(0, 181);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
-            this.layoutControlGroup2.Size = new System.Drawing.Size(778, 326);
+            this.layoutControlGroup2.Size = new System.Drawing.Size(778, 365);
             this.layoutControlGroup2.Text = "Danh sách dịch vụ";
             // 
             // layoutControlItem5
@@ -455,16 +404,16 @@ namespace QLKhachSan.UI
             this.layoutControlItem5.Control = this.gcDichVu;
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(754, 276);
+            this.layoutControlItem5.Size = new System.Drawing.Size(754, 315);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem5.TextVisible = false;
             // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 210);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 170);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(778, 10);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(778, 11);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // ucQLDichVu
@@ -483,7 +432,6 @@ namespace QLKhachSan.UI
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gcDichVu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gvDichVu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtSoLuong.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiaDichVu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtTenDichVu.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtMaDichVu.Properties)).EndInit();
@@ -492,7 +440,6 @@ namespace QLKhachSan.UI
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
@@ -514,7 +461,6 @@ namespace QLKhachSan.UI
         private DevExpress.XtraBars.BarButtonItem btnXoa;
         private DevExpress.XtraBars.BarButtonItem btnHuyBo;
         private DevExpress.XtraLayout.LayoutControl layoutControl1;
-        private DevExpress.XtraEditors.TextEdit txtSoLuong;
         private DevExpress.XtraEditors.TextEdit txtGiaDichVu;
         private DevExpress.XtraEditors.TextEdit txtTenDichVu;
         private DevExpress.XtraEditors.TextEdit txtMaDichVu;
@@ -522,7 +468,6 @@ namespace QLKhachSan.UI
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
-        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraGrid.GridControl gcDichVu;
         private DevExpress.XtraGrid.Views.Grid.GridView gvDichVu;
@@ -530,7 +475,6 @@ namespace QLKhachSan.UI
         private DevExpress.XtraGrid.Columns.GridColumn colMaDichVu;
         private DevExpress.XtraGrid.Columns.GridColumn colTenDichVu;
         private DevExpress.XtraGrid.Columns.GridColumn colGiaDichVu;
-        private DevExpress.XtraGrid.Columns.GridColumn colSoLuong;
         private DevExpress.XtraGrid.Columns.GridColumn colSTT;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
