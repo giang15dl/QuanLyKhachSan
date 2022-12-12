@@ -1,4 +1,0 @@
-1. làm chức năng trả phòng
-2. làm report
-3. thêm thương hiệu
-4. làm chức năng hiển thị danh sách hóa đơn
