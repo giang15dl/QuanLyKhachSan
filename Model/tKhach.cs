@@ -17,7 +17,6 @@ namespace QLKhachSan.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public tKhach()
         {
-            this.tHoaDons = new HashSet<tHoaDon>();
             this.tThuePhongs = new HashSet<tThuePhong>();
         }
     
@@ -26,8 +25,6 @@ namespace QLKhachSan.Model
         public string SoCMND { get; set; }
         public string DienThoai { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<tHoaDon> tHoaDons { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tThuePhong> tThuePhongs { get; set; }
     }

@@ -14,14 +14,14 @@ namespace QLKhachSan.Model
     
     public partial class tHoaDon
     {
-        public string MaHoaDon { get; set; }
+        public string MaThuePhong { get; set; }
+        public string SoPhong { get; set; }
         public string MaKhach { get; set; }
         public string MaDichVu { get; set; }
-        public string SoPhong { get; set; }
-        public Nullable<System.DateTime> NgayTraPhong { get; set; }
+        public Nullable<int> Soluong { get; set; }
+        public Nullable<double> ThanhTien { get; set; }
     
         public virtual tDichVu tDichVu { get; set; }
-        public virtual tKhach tKhach { get; set; }
-        public virtual tPhong tPhong { get; set; }
+        public virtual tThuePhong tThuePhong { get; set; }
     }
 }

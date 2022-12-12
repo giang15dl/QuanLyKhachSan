@@ -7,8 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DevExpress.XtraBars;
 using DevExpress.XtraGrid.Views.Tile;
+using DevExpress.XtraGrid.Views.Tile.ViewInfo;
 using QLKhachSan.Model;
+using DevExpress.XtraGrid.Views.Base;
 
 namespace QLKhachSan.UI
 {
@@ -16,8 +19,10 @@ namespace QLKhachSan.UI
     {
         QLKSEntities data = new QLKSEntities();
 
-        public ucQLPhong()
+        private MainForm mainForm;
+        public ucQLPhong(Form callingForm)
         {
+            this.mainForm = callingForm as MainForm;
             InitializeComponent();
         }
 
@@ -36,8 +41,8 @@ namespace QLKhachSan.UI
             txtGiaTien.Text = "0";
 
             List<string> tinhtrang= new List<string>();
-            tinhtrang.Add("Trống");
-            tinhtrang.Add("Đang ở");
+            tinhtrang.Add("Trong");
+            tinhtrang.Add("DangO");
             cboTinhTrang.Properties.Items.AddRange(tinhtrang);
             cboTinhTrang.SelectedIndex = 0;
 
@@ -50,38 +55,32 @@ namespace QLKhachSan.UI
         private void LoadData()
         {
             data = new QLKSEntities();
+
             List<tPhong> lstPhong = data.tPhongs.ToList();
             var columns = from t in lstPhong
                           select new
                           {
                               SoPhong = t.SoPhong,
                               GiaTien = t.GiaTien,
-                              ConSuDung = setConSuDung(t.ConSuDung)
+                              TinhTrang = t.TinhTrang
                           };
             gcPhong.DataSource = columns.ToList();
         }
 
-        private string setConSuDung(string s)
-        {
-            if (s == "Yes") {
-                return "Đang ở";
-            }
-            return "Trống";
-        }
-
         private void updateLabel()
         {
-            int SoPhongTrong = data.tPhongs.Where(x => x.ConSuDung == "No").Count();
+            int SoPhongTrong = data.tPhongs.Where(x => x.TinhTrang == "Trong").Count();
             this.labelTrong.Text = SoPhongTrong.ToString();
 
-            int SoPhongDangO = data.tPhongs.Where(x => x.ConSuDung == "Yes").Count();
+            int SoPhongDangO = data.tPhongs.Where(x => x.TinhTrang == "DangO").Count();
             this.labelDangO.Text = SoPhongDangO.ToString();
         }
 
         private void tvPhong_ItemCustomize(object sender, TileViewItemCustomizeEventArgs e)
         {
             TileView view = sender as TileView;
-            if ((bool)view.GetRowCellValue(e.RowHandle, colConSuDung).Equals("Đang ở"))
+            string tinhtrang = view.GetRowCellValue(e.RowHandle, colTinhTrang).ToString();
+            if ((bool) tinhtrang.Equals("DangO", StringComparison.InvariantCulture))
             {
                 e.Item.AppearanceItem.Normal.BackColor = Color.Orange;
             }
@@ -93,22 +92,22 @@ namespace QLKhachSan.UI
 
             txtSoPhong.Text = view.GetRowCellValue(e.Item.RowHandle, colSoPhong).ToString();
             txtGiaTien.Text = view.GetRowCellValue(e.Item.RowHandle, colGiaTien).ToString();
-            cboTinhTrang.SelectedIndex = getIndexcboConSuDung(view.GetRowCellValue(e.Item.RowHandle, colConSuDung).ToString());
+            cboTinhTrang.SelectedIndex = getIndexcboConSuDung(view.GetRowCellValue(e.Item.RowHandle, colTinhTrang).ToString());
 
             btnThem.Enabled = false;
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
         }
 
-        private int getIndexcboConSuDung(string YesNo)
+        private int getIndexcboConSuDung(string tinhtrang)
         {
-            if (YesNo.Equals("Trống"))
+            if (tinhtrang.Equals("Trong", StringComparison.InvariantCulture))
             {
                 return 0;
             }
             return 1;
         }
-
+        
         private void btnThem_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             data = new QLKSEntities();
@@ -119,7 +118,7 @@ namespace QLKhachSan.UI
                 {
                     SoPhong = autoGenarateSoPhong(),
                     GiaTien = int.Parse(txtGiaTien.Text.Trim()),
-                    ConSuDung = insertConSuDung(cboTinhTrang.Text)
+                    TinhTrang = cboTinhTrang.Text
                 };
                 data.tPhongs.Add(phong);
                 data.SaveChanges();
@@ -134,8 +133,6 @@ namespace QLKhachSan.UI
 
         private bool ValidateInputData()
         {
-            data = new QLKSEntities();
-
             if (txtGiaTien.Text.Trim().Length == 0)
             {
                 MessageBox.Show("Giá tiền trống!", "Thông báo");
@@ -158,6 +155,8 @@ namespace QLKhachSan.UI
 
         private string autoGenarateSoPhong()
         {
+            data = new QLKSEntities();
+
             int numberofRows = data.tPhongs.Count();
 
             if (numberofRows > 0)
@@ -167,7 +166,7 @@ namespace QLKhachSan.UI
                     .Select(y => y.SoPhong)
                     .FirstOrDefault();
 
-                char[] MaPhongLastRow = maPhongLastRow.ToArray(); //ex {'P','0','0','1'}
+                char[] MaPhongLastRow = maPhongLastRow.ToArray(); //ex {'P','0','0','1'} B001->B999 K001->K999
 
                 if (int.Parse(MaPhongLastRow[1].ToString()) == 0)
                 {
@@ -212,23 +211,15 @@ namespace QLKhachSan.UI
             return "P001";
         }
 
-        private string insertConSuDung(string s)
-        {
-            if (s.Equals("Đang ở"))
-            {
-                return "Yes";
-            }
-            return "No";
-        }
-
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            data = new QLKSEntities();
+
             if (ValidateInputData())
             {
-                data = new QLKSEntities();
                 var phong = data.tPhongs.Where(x => x.SoPhong == txtSoPhong.Text.Trim()).FirstOrDefault();
                 phong.GiaTien = int.Parse(txtGiaTien.Text.Trim());
-                phong.ConSuDung = insertConSuDung(cboTinhTrang.Text);
+                phong.TinhTrang = cboTinhTrang.Text;
                 data.SaveChanges();
                 LoadData();
                 updateLabel();
@@ -239,6 +230,7 @@ namespace QLKhachSan.UI
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             data = new QLKSEntities();
+
             Boolean canDelete = true;
 
             if (MessageBox.Show("Bạn thực sự muốn xóa phòng ["+txtSoPhong.Text+"] !", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
@@ -304,13 +296,60 @@ namespace QLKhachSan.UI
             }
         }
 
-        private void tvPhong_ItemCustomize_1(object sender, TileViewItemCustomizeEventArgs e)
+        string txtSoPhong_currentFocus;
+        private void tvPhong_FocusedRowChanged(object sender, FocusedRowChangedEventArgs e)
         {
             TileView view = sender as TileView;
-            if ((bool)view.GetRowCellValue(e.RowHandle, colConSuDung).Equals("Đang ở"))
+            this.txtSoPhong_currentFocus = view.GetFocusedRowCellValue(colSoPhong).ToString();
+        }
+
+        private void tvPhong_ItemRightClick(object sender, TileViewItemClickEventArgs e)
+        {
+            //popupMenu1.ShowPopup(Control.MousePosition);
+
+            string tinhtrang = data.tPhongs.Where(x => x.SoPhong == this.txtSoPhong_currentFocus).Select(y => y.TinhTrang).FirstOrDefault();
+
+            if (tinhtrang.Equals("Trong"))
             {
-                e.Item.AppearanceItem.Normal.BackColor = Color.Orange;
+                popupMenu1.ShowPopup(Control.MousePosition);
+            }
+            else if (tinhtrang.Equals("DangO"))
+            {
+                popupMenu2.ShowPopup(Control.MousePosition);
             }
         }
-    }     
+
+        frmQLDatPhong FrmQLDatPhong;
+        private void barbtnNhanPhong_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            FrmQLDatPhong = new frmQLDatPhong(this.txtSoPhong_currentFocus);
+            FrmQLDatPhong.TopLevel = false;
+            FrmQLDatPhong.Dock = DockStyle.Fill;
+            this.mainForm.showFormQLDatPhong(FrmQLDatPhong);
+        }
+
+        private void barbtnChinhSuaThongTin_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            MessageBox.Show("Chỉnh sửa thông tin", "Thông báo");
+        }
+
+        private void barbtnTraPhongCapNhatHD_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+            MessageBox.Show("Trả phòng / Cập nhật HĐ", "Thông báo");
+        }
+
+        private void barbtnHuy_ItemClick(object sender, ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnRefresh_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            LoadData();
+            updateLabel();
+        }
+
+
+    }
 }

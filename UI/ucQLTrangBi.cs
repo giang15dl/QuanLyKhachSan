@@ -31,42 +31,46 @@ namespace QLKhachSan.UI
         {
             List<tPhong> lstPhong = data.tPhongs.ToList();
             var columnPhong = from t in lstPhong
-                          select new
-                          {
-                              SoPhong = t.SoPhong,
-                              GiaTien = t.GiaTien,
-                              TrangThai = setConSuDung(t.ConSuDung)
-                          };
+                              select new
+                              {
+                                  SoPhong = t.SoPhong,
+                                  GiaTien = t.GiaTien,
+                                  TinhTrang = t.TinhTrang
+                              };
 
             leSoPhong.Properties.DataSource = columnPhong.ToList();
             leSoPhong.Properties.DisplayMember = "SoPhong";
             leSoPhong.Properties.ValueMember = "SoPhong";
+            leSoPhong.EditValue = "P001";
 
             List<tThietBi> lstThietBi = data.tThietBis.ToList();
             var columnThietBi = from t in lstThietBi
-                          select new
-                          {
-                              MaThietBi = t.MaThietBi,
-                              TenThietBi = t.TenThietBi,
-                              NgayMua = t.NgayMua,
-                              GiaMua = t.GiaMua,
-                              TinhNang = t.TinhTrang
-                          };
+                                select new
+                                {
+                                    MaThietBi = t.MaThietBi,
+                                    TenThietBi = t.TenThietBi,
+                                    NgayMua = t.NgayMua,
+                                    GiaMua = t.GiaMua,
+                                    TinhNang = t.TinhTrang
+                                };
             leThietBi.Properties.DataSource = columnThietBi.ToList();
             leThietBi.Properties.DisplayMember = "TenThietBi";
             leThietBi.Properties.ValueMember = "MaThietBi";
+            leThietBi.EditValue = "TB001";
 
             this.deNgayBatDauTrangBi.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.deNgayBatDauTrangBi.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.deNgayBatDauTrangBi.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.deNgayBatDauTrangBi.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.deNgayBatDauTrangBi.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.deNgayBatDauTrangBi.DateTime = DateTime.Now;
 
             this.deNgayKetThucTrangBi.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.deNgayKetThucTrangBi.Properties.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.deNgayKetThucTrangBi.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.deNgayKetThucTrangBi.Properties.EditFormat.FormatString = "dd/MM/yyyy";
             this.deNgayKetThucTrangBi.Properties.Mask.EditMask = "dd/MM/yyyy";
+            this.deNgayKetThucTrangBi.DateTime = DateTime.Now;
 
             this.ActiveControl = leSoPhong;
 
@@ -95,15 +99,6 @@ namespace QLKhachSan.UI
             gcTrangBi.DataSource = columns.ToList();
         }
 
-        private string setConSuDung(string s)
-        {
-            if (s == "Yes")
-            {
-                return "Đang ở";
-            }
-            return "Trống";
-        }
-
         private void gvTrangBi_RowClick(object sender, DevExpress.XtraGrid.Views.Grid.RowClickEventArgs e)
         {
             loadDataToTextbox(sender);
@@ -129,7 +124,9 @@ namespace QLKhachSan.UI
             GridView view = sender as GridView;
 
             leSoPhong.EditValue = view.GetFocusedRowCellValue(colSoPhong).ToString();
+            leSoPhong.ReadOnly = true;
             leThietBi.EditValue = view.GetFocusedRowCellValue(colMaThietBi).ToString();
+            leThietBi.ReadOnly = true;
 
             deNgayBatDauTrangBi.EditValue = DateTime.Parse(view.GetFocusedRowCellValue(colNgayBatDauTrangBi).ToString());
             deNgayKetThucTrangBi.EditValue = DateTime.Parse(view.GetFocusedRowCellValue(colNgayKetThucTrangBi).ToString());
@@ -150,8 +147,8 @@ namespace QLKhachSan.UI
                 {
                     SoPhong = leSoPhong.EditValue.ToString(),
                     MaThietBi = leThietBi.EditValue.ToString(),
-                    NgayBatDauTrangBi = DateTime.Parse(deNgayBatDauTrangBi.EditValue.ToString()),
-                    NgayKetThucTrangBi = DateTime.Parse(deNgayKetThucTrangBi.EditValue.ToString())
+                    NgayBatDauTrangBi = deNgayBatDauTrangBi.DateTime,
+                    NgayKetThucTrangBi = deNgayKetThucTrangBi.DateTime
                 };
                 data.tTrangBis.Add(trangbi);
                 data.SaveChanges();
@@ -187,62 +184,99 @@ namespace QLKhachSan.UI
                 return false;
             }
 
-            // NgayKetThuc > NgayBatDau
-            /*int NamBatDauTrangBi = dtNgayBatDauTrangBi.Value.Year;
-            int ThangBatDauTrangBi = dtNgayBatDauTrangBi.Value.Month;
-            int NgayBatDauTrangBi = dtNgayBatDauTrangBi.Value.Day;
+            // NgayKetThuc >= NgayBatDau
+            if (ValidateNgayTrangBi() == false)
+            {
+                return false;
+            }
 
-            int NamKetThucTrangBi = dtNgayKetThucTrangBi.Value.Year;
-            int ThangKetThucTrangBi = dtNgayKetThucTrangBi.Value.Month;
-            int NgayKetThucTrangBi = dtNgayKetThucTrangBi.Value.Day;
+            return true;
+        }
+
+        private bool ValidateNgayTrangBi()
+        {
+            int NamBatDauTrangBi = deNgayBatDauTrangBi.DateTime.Year;
+            int ThangBatDauTrangBi = deNgayBatDauTrangBi.DateTime.Month;
+            int NgayBatDauTrangBi = deNgayBatDauTrangBi.DateTime.Day;
+
+            int NamKetThucTrangBi = deNgayKetThucTrangBi.DateTime.Year;
+            int ThangKetThucTrangBi = deNgayKetThucTrangBi.DateTime.Month;
+            int NgayKetThucTrangBi = deNgayKetThucTrangBi.DateTime.Day;
 
             if (NamKetThucTrangBi < NamBatDauTrangBi)
             {
-                MessageBox.Show("Ngày kết thúc trang bị phải bằng hoặc sau ngày bắt đầu trang bị0", "Thông báo");
+                MessageBox.Show("Ngày kết thúc trang bị phải bằng hoặc sau ngày bắt đầu trang bị", "Thông báo");
                 return false;
             }
             else if (NamKetThucTrangBi == NamBatDauTrangBi)
             {
                 if (ThangKetThucTrangBi < ThangBatDauTrangBi)
                 {
-                    MessageBox.Show("Ngày kết thúc trang bị phải bằng hoặc sau ngày bắt đầu trang bị1", "Thông báo");
+                    MessageBox.Show("Ngày kết thúc trang bị phải bằng hoặc sau ngày bắt đầu trang bị", "Thông báo");
                     return false;
                 }
                 else if (ThangKetThucTrangBi >= ThangBatDauTrangBi)
                 {
                     if (NgayKetThucTrangBi < NgayBatDauTrangBi)
                     {
-                        MessageBox.Show("Ngày kết thúc trang bị phải bằng hoặc sau ngày bắt đầu trang bị2", "Thông báo");
+                        MessageBox.Show("Ngày kết thúc trang bị phải bằng hoặc sau ngày bắt đầu trang bị", "Thông báo");
                         return false;
                     }
                 }
-            }*/
-
+            }
             return true;
         }
 
         private void btnSua_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
+           if (ValidateNgayTrangBi())
+           {
+                data = new QLKSEntities();
+                string _SoPhong = leSoPhong.EditValue.ToString();
+                string _MaThietBi = leThietBi.EditValue.ToString();
+                var quanlytrangbi = data.tTrangBis.Where(x => x.SoPhong == _SoPhong && x.MaThietBi == _MaThietBi).FirstOrDefault();
+                quanlytrangbi.NgayBatDauTrangBi = deNgayBatDauTrangBi.DateTime;
+                quanlytrangbi.NgayKetThucTrangBi = deNgayKetThucTrangBi.DateTime;
+                data.SaveChanges();
+                LoadData();
+                MessageBox.Show("Cập nhật thành công trang bị cho phòng [" + leSoPhong.EditValue.ToString() + "]!", "Thông báo");
+           }
         }
 
         private void btnXoa_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
+            data = new QLKSEntities();
 
+            if (MessageBox.Show("Bạn thực sự muốn xóa trang bị cho phòng ["+leSoPhong.EditValue.ToString()+"]!", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                string _SoPhong = leSoPhong.EditValue.ToString();
+                string _MaThietBi = leThietBi.EditValue.ToString();
+
+                var trangbi = data.tTrangBis
+                    .Where(x => x.SoPhong == _SoPhong && x.MaThietBi == _MaThietBi)
+                    .FirstOrDefault();
+
+                data.tTrangBis.Remove(trangbi);
+                data.SaveChanges();
+                LoadData();
+                MessageBox.Show("Xoá thành công trang bị cho phòng [" + leSoPhong.EditValue.ToString() + "]!", "Thông báo");
+
+                CLEAR();
+            }
         }
 
         private void btnHuyBo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            CLEAR();
+            CLEAR();       
         }
 
         private void CLEAR()
         {
             //gcTrangBi.ClearSelection();
-            leSoPhong.EditValue = null;
-            leSoPhong.Enabled = true;
-            leThietBi.EditValue = 0;
-            leThietBi.Enabled = true;
+            leSoPhong.EditValue = "";
+            leSoPhong.ReadOnly = false;
+            leThietBi.EditValue = "";
+            leThietBi.ReadOnly = false;
 
             this.ActiveControl = leSoPhong;
 

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QLKSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="QLKSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tDichVu">
           <Key>
             <PropertyRef Name="MaDichVu" />
@@ -16,13 +16,17 @@
         </EntityType>
         <EntityType Name="tHoaDon">
           <Key>
-            <PropertyRef Name="MaHoaDon" />
+            <PropertyRef Name="MaThuePhong" />
+            <PropertyRef Name="SoPhong" />
+            <PropertyRef Name="MaKhach" />
+            <PropertyRef Name="MaDichVu" />
           </Key>
-          <Property Name="MaHoaDon" Type="char" MaxLength="5" Nullable="false" />
-          <Property Name="MaKhach" Type="char" MaxLength="4" />
-          <Property Name="MaDichVu" Type="char" MaxLength="4" />
-          <Property Name="SoPhong" Type="char" MaxLength="4" />
-          <Property Name="NgayTraPhong" Type="datetime" />
+          <Property Name="MaThuePhong" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="SoPhong" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaKhach" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="MaDichVu" Type="char" MaxLength="4" Nullable="false" />
+          <Property Name="Soluong" Type="int" />
+          <Property Name="ThanhTien" Type="float" />
         </EntityType>
         <EntityType Name="tKhach">
           <Key>
@@ -47,7 +51,7 @@
           </Key>
           <Property Name="SoPhong" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="GiaTien" Type="int" Nullable="false" />
-          <Property Name="ConSuDung" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="10" Nullable="false" />
         </EntityType>
         <EntityType Name="tThietBi">
           <Key>
@@ -61,11 +65,11 @@
         </EntityType>
         <EntityType Name="tThuePhong">
           <Key>
-            <PropertyRef Name="STT" />
+            <PropertyRef Name="MaThuePhong" />
             <PropertyRef Name="SoPhong" />
             <PropertyRef Name="MaKhach" />
           </Key>
-          <Property Name="STT" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MaThuePhong" Type="char" MaxLength="5" Nullable="false" />
           <Property Name="SoPhong" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="MaKhach" Type="char" MaxLength="4" Nullable="false" />
           <Property Name="NgayNhanPhong" Type="datetime" Nullable="false" />
@@ -82,7 +86,7 @@
           <Property Name="NgayKetThucTrangBi" Type="datetime" Nullable="false" />
         </EntityType>
         <Association Name="thd_fk_madichvu">
-          <End Role="tDichVu" Type="Self.tDichVu" Multiplicity="0..1" />
+          <End Role="tDichVu" Type="Self.tDichVu" Multiplicity="1" />
           <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tDichVu">
@@ -93,27 +97,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="thd_fk_makhach">
-          <End Role="tKhach" Type="Self.tKhach" Multiplicity="0..1" />
+        <Association Name="thd_fk_thuephong">
+          <End Role="tThuePhong" Type="Self.tThuePhong" Multiplicity="1" />
           <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tKhach">
+            <Principal Role="tThuePhong">
+              <PropertyRef Name="MaThuePhong" />
+              <PropertyRef Name="SoPhong" />
               <PropertyRef Name="MaKhach" />
             </Principal>
             <Dependent Role="tHoaDon">
+              <PropertyRef Name="MaThuePhong" />
+              <PropertyRef Name="SoPhong" />
               <PropertyRef Name="MaKhach" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="thd_fk_sophong">
-          <End Role="tPhong" Type="Self.tPhong" Multiplicity="0..1" />
-          <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tPhong">
-              <PropertyRef Name="SoPhong" />
-            </Principal>
-            <Dependent Role="tHoaDon">
-              <PropertyRef Name="SoPhong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -178,12 +174,8 @@
             <End Role="tDichVu" EntitySet="tDichVu" />
             <End Role="tHoaDon" EntitySet="tHoaDon" />
           </AssociationSet>
-          <AssociationSet Name="thd_fk_makhach" Association="Self.thd_fk_makhach">
-            <End Role="tKhach" EntitySet="tKhach" />
-            <End Role="tHoaDon" EntitySet="tHoaDon" />
-          </AssociationSet>
-          <AssociationSet Name="thd_fk_sophong" Association="Self.thd_fk_sophong">
-            <End Role="tPhong" EntitySet="tPhong" />
+          <AssociationSet Name="thd_fk_thuephong" Association="Self.thd_fk_thuephong">
+            <End Role="tThuePhong" EntitySet="tThuePhong" />
             <End Role="tHoaDon" EntitySet="tHoaDon" />
           </AssociationSet>
           <AssociationSet Name="ttb_fk_matb" Association="Self.ttb_fk_matb">
@@ -203,7 +195,8 @@
             <End Role="tThuePhong" EntitySet="tThuePhong" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="QLKSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -219,16 +212,19 @@
         </EntityType>
         <EntityType Name="tHoaDon">
           <Key>
-            <PropertyRef Name="MaHoaDon" />
+            <PropertyRef Name="MaThuePhong" />
+            <PropertyRef Name="SoPhong" />
+            <PropertyRef Name="MaKhach" />
+            <PropertyRef Name="MaDichVu" />
           </Key>
-          <Property Name="MaHoaDon" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
-          <Property Name="MaKhach" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="MaDichVu" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="SoPhong" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
-          <Property Name="NgayTraPhong" Type="DateTime" Precision="3" />
+          <Property Name="MaThuePhong" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SoPhong" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaKhach" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="MaDichVu" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Soluong" Type="Int32" />
+          <Property Name="ThanhTien" Type="Double" />
           <NavigationProperty Name="tDichVu" Relationship="Self.thd_fk_madichvu" FromRole="tHoaDon" ToRole="tDichVu" />
-          <NavigationProperty Name="tKhach" Relationship="Self.thd_fk_makhach" FromRole="tHoaDon" ToRole="tKhach" />
-          <NavigationProperty Name="tPhong" Relationship="Self.thd_fk_sophong" FromRole="tHoaDon" ToRole="tPhong" />
+          <NavigationProperty Name="tThuePhong" Relationship="Self.thd_fk_thuephong" FromRole="tHoaDon" ToRole="tThuePhong" />
         </EntityType>
         <EntityType Name="tKhach">
           <Key>
@@ -238,8 +234,15 @@
           <Property Name="TenKhach" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SoCMND" Type="String" MaxLength="15" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="DienThoai" Type="String" MaxLength="11" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tHoaDons" Relationship="Self.thd_fk_makhach" FromRole="tKhach" ToRole="tHoaDon" />
           <NavigationProperty Name="tThuePhongs" Relationship="Self.ttp_fk_makhach" FromRole="tKhach" ToRole="tThuePhong" />
+        </EntityType>
+        <EntityType Name="tNhanVien">
+          <Key>
+            <PropertyRef Name="UserN" />
+          </Key>
+          <Property Name="UserN" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="PassW" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TenNhanVien" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="tPhong">
           <Key>
@@ -247,8 +250,7 @@
           </Key>
           <Property Name="SoPhong" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="GiaTien" Type="Int32" Nullable="false" />
-          <Property Name="ConSuDung" Type="String" MaxLength="3" FixedLength="true" Unicode="false" Nullable="false" />
-          <NavigationProperty Name="tHoaDons" Relationship="Self.thd_fk_sophong" FromRole="tPhong" ToRole="tHoaDon" />
+          <Property Name="TinhTrang" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="tTrangBis" Relationship="Self.ttb_fk_sophong" FromRole="tPhong" ToRole="tTrangBi" />
           <NavigationProperty Name="tThuePhongs" Relationship="Self.ttp_fk_sophong" FromRole="tPhong" ToRole="tThuePhong" />
         </EntityType>
@@ -265,15 +267,16 @@
         </EntityType>
         <EntityType Name="tThuePhong">
           <Key>
-            <PropertyRef Name="STT" />
+            <PropertyRef Name="MaThuePhong" />
             <PropertyRef Name="SoPhong" />
             <PropertyRef Name="MaKhach" />
           </Key>
-          <Property Name="STT" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MaThuePhong" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="SoPhong" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="MaKhach" Type="String" MaxLength="4" FixedLength="true" Unicode="false" Nullable="false" />
           <Property Name="NgayNhanPhong" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NgayTraPhong" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="tHoaDons" Relationship="Self.thd_fk_thuephong" FromRole="tThuePhong" ToRole="tHoaDon" />
           <NavigationProperty Name="tKhach" Relationship="Self.ttp_fk_makhach" FromRole="tThuePhong" ToRole="tKhach" />
           <NavigationProperty Name="tPhong" Relationship="Self.ttp_fk_sophong" FromRole="tThuePhong" ToRole="tPhong" />
         </EntityType>
@@ -290,7 +293,7 @@
           <NavigationProperty Name="tThietBi" Relationship="Self.ttb_fk_matb" FromRole="tTrangBi" ToRole="tThietBi" />
         </EntityType>
         <Association Name="thd_fk_madichvu">
-          <End Role="tDichVu" Type="Self.tDichVu" Multiplicity="0..1" />
+          <End Role="tDichVu" Type="Self.tDichVu" Multiplicity="1" />
           <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="tDichVu">
@@ -301,27 +304,19 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="thd_fk_makhach">
-          <End Role="tKhach" Type="Self.tKhach" Multiplicity="0..1" />
+        <Association Name="thd_fk_thuephong">
+          <End Role="tThuePhong" Type="Self.tThuePhong" Multiplicity="1" />
           <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="tKhach">
+            <Principal Role="tThuePhong">
+              <PropertyRef Name="MaThuePhong" />
+              <PropertyRef Name="SoPhong" />
               <PropertyRef Name="MaKhach" />
             </Principal>
             <Dependent Role="tHoaDon">
+              <PropertyRef Name="MaThuePhong" />
+              <PropertyRef Name="SoPhong" />
               <PropertyRef Name="MaKhach" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="thd_fk_sophong">
-          <End Role="tPhong" Type="Self.tPhong" Multiplicity="0..1" />
-          <End Role="tHoaDon" Type="Self.tHoaDon" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tPhong">
-              <PropertyRef Name="SoPhong" />
-            </Principal>
-            <Dependent Role="tHoaDon">
-              <PropertyRef Name="SoPhong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -377,6 +372,7 @@
           <EntitySet Name="tDichVus" EntityType="Self.tDichVu" />
           <EntitySet Name="tHoaDons" EntityType="Self.tHoaDon" />
           <EntitySet Name="tKhaches" EntityType="Self.tKhach" />
+          <EntitySet Name="tNhanViens" EntityType="Self.tNhanVien" />
           <EntitySet Name="tPhongs" EntityType="Self.tPhong" />
           <EntitySet Name="tThietBis" EntityType="Self.tThietBi" />
           <EntitySet Name="tThuePhongs" EntityType="Self.tThuePhong" />
@@ -385,12 +381,8 @@
             <End Role="tDichVu" EntitySet="tDichVus" />
             <End Role="tHoaDon" EntitySet="tHoaDons" />
           </AssociationSet>
-          <AssociationSet Name="thd_fk_makhach" Association="Self.thd_fk_makhach">
-            <End Role="tKhach" EntitySet="tKhaches" />
-            <End Role="tHoaDon" EntitySet="tHoaDons" />
-          </AssociationSet>
-          <AssociationSet Name="thd_fk_sophong" Association="Self.thd_fk_sophong">
-            <End Role="tPhong" EntitySet="tPhongs" />
+          <AssociationSet Name="thd_fk_thuephong" Association="Self.thd_fk_thuephong">
+            <End Role="tThuePhong" EntitySet="tThuePhongs" />
             <End Role="tHoaDon" EntitySet="tHoaDons" />
           </AssociationSet>
           <AssociationSet Name="ttp_fk_makhach" Association="Self.ttp_fk_makhach">
@@ -409,16 +401,7 @@
             <End Role="tThietBi" EntitySet="tThietBis" />
             <End Role="tTrangBi" EntitySet="tTrangBis" />
           </AssociationSet>
-          <EntitySet Name="tNhanViens" EntityType="QLKSModel.tNhanVien" />
         </EntityContainer>
-        <EntityType Name="tNhanVien">
-          <Key>
-            <PropertyRef Name="UserN" />
-          </Key>
-          <Property Name="UserN" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="PassW" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="TenNhanVien" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="true" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -438,11 +421,12 @@
           <EntitySetMapping Name="tHoaDons">
             <EntityTypeMapping TypeName="QLKSModel.tHoaDon">
               <MappingFragment StoreEntitySet="tHoaDon">
-                <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+                <ScalarProperty Name="MaThuePhong" ColumnName="MaThuePhong" />
+                <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
                 <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
                 <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
-                <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
-                <ScalarProperty Name="NgayTraPhong" ColumnName="NgayTraPhong" />
+                <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -456,12 +440,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tNhanViens">
+            <EntityTypeMapping TypeName="QLKSModel.tNhanVien">
+              <MappingFragment StoreEntitySet="tNhanVien">
+                <ScalarProperty Name="UserN" ColumnName="UserN" />
+                <ScalarProperty Name="PassW" ColumnName="PassW" />
+                <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="tPhongs">
             <EntityTypeMapping TypeName="QLKSModel.tPhong">
               <MappingFragment StoreEntitySet="tPhong">
                 <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
                 <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-                <ScalarProperty Name="ConSuDung" ColumnName="ConSuDung" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -479,7 +472,7 @@
           <EntitySetMapping Name="tThuePhongs">
             <EntityTypeMapping TypeName="QLKSModel.tThuePhong">
               <MappingFragment StoreEntitySet="tThuePhong">
-                <ScalarProperty Name="STT" ColumnName="STT" />
+                <ScalarProperty Name="MaThuePhong" ColumnName="MaThuePhong" />
                 <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
                 <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
                 <ScalarProperty Name="NgayNhanPhong" ColumnName="NgayNhanPhong" />
@@ -494,15 +487,6 @@
                 <ScalarProperty Name="MaThietBi" ColumnName="MaThietBi" />
                 <ScalarProperty Name="NgayBatDauTrangBi" ColumnName="NgayBatDauTrangBi" />
                 <ScalarProperty Name="NgayKetThucTrangBi" ColumnName="NgayKetThucTrangBi" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="tNhanViens">
-            <EntityTypeMapping TypeName="QLKSModel.tNhanVien">
-              <MappingFragment StoreEntitySet="tNhanVien">
-                <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
-                <ScalarProperty Name="PassW" ColumnName="PassW" />
-                <ScalarProperty Name="UserN" ColumnName="UserN" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

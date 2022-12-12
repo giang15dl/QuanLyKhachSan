@@ -14,11 +14,12 @@
     <EntitySetMapping Name="tHoaDons">
       <EntityTypeMapping TypeName="QLKSModel.tHoaDon">
         <MappingFragment StoreEntitySet="tHoaDon">
-          <ScalarProperty Name="MaHoaDon" ColumnName="MaHoaDon" />
+          <ScalarProperty Name="MaThuePhong" ColumnName="MaThuePhong" />
+          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
           <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
           <ScalarProperty Name="MaDichVu" ColumnName="MaDichVu" />
-          <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
-          <ScalarProperty Name="NgayTraPhong" ColumnName="NgayTraPhong" />
+          <ScalarProperty Name="Soluong" ColumnName="Soluong" />
+          <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -32,12 +33,21 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="tNhanViens">
+      <EntityTypeMapping TypeName="QLKSModel.tNhanVien">
+        <MappingFragment StoreEntitySet="tNhanVien">
+          <ScalarProperty Name="UserN" ColumnName="UserN" />
+          <ScalarProperty Name="PassW" ColumnName="PassW" />
+          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="tPhongs">
       <EntityTypeMapping TypeName="QLKSModel.tPhong">
         <MappingFragment StoreEntitySet="tPhong">
           <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
           <ScalarProperty Name="GiaTien" ColumnName="GiaTien" />
-          <ScalarProperty Name="ConSuDung" ColumnName="ConSuDung" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -55,7 +65,7 @@
     <EntitySetMapping Name="tThuePhongs">
       <EntityTypeMapping TypeName="QLKSModel.tThuePhong">
         <MappingFragment StoreEntitySet="tThuePhong">
-          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MaThuePhong" ColumnName="MaThuePhong" />
           <ScalarProperty Name="SoPhong" ColumnName="SoPhong" />
           <ScalarProperty Name="MaKhach" ColumnName="MaKhach" />
           <ScalarProperty Name="NgayNhanPhong" ColumnName="NgayNhanPhong" />
@@ -70,15 +80,6 @@
           <ScalarProperty Name="MaThietBi" ColumnName="MaThietBi" />
           <ScalarProperty Name="NgayBatDauTrangBi" ColumnName="NgayBatDauTrangBi" />
           <ScalarProperty Name="NgayKetThucTrangBi" ColumnName="NgayKetThucTrangBi" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="tNhanViens">
-      <EntityTypeMapping TypeName="QLKSModel.tNhanVien">
-        <MappingFragment StoreEntitySet="tNhanVien">
-          <ScalarProperty Name="TenNhanVien" ColumnName="TenNhanVien" />
-          <ScalarProperty Name="PassW" ColumnName="PassW" />
-          <ScalarProperty Name="UserN" ColumnName="UserN" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

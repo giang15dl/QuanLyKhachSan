@@ -250,7 +250,7 @@ namespace QLKhachSan.UI
             this.leSoPhong.Properties.Columns.AddRange(new DevExpress.XtraEditors.Controls.LookUpColumnInfo[] {
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("SoPhong", "Số phòng"),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("GiaTien", "Giá tiền"),
-            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TrangThai", "Trạng thái")});
+            new DevExpress.XtraEditors.Controls.LookUpColumnInfo("TinhTrang", "Tình trạng")});
             this.leSoPhong.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
             this.leSoPhong.Size = new System.Drawing.Size(200, 28);
             this.leSoPhong.StyleController = this.layoutControl1;
@@ -302,6 +302,7 @@ namespace QLKhachSan.UI
             this.gvTrangBi.GridControl = this.gcTrangBi;
             this.gvTrangBi.Name = "gvTrangBi";
             this.gvTrangBi.OptionsBehavior.EditorShowMode = DevExpress.Utils.EditorShowMode.MouseUp;
+            this.gvTrangBi.OptionsFind.AlwaysVisible = true;
             this.gvTrangBi.OptionsView.ShowGroupPanel = false;
             this.gvTrangBi.RowClick += new DevExpress.XtraGrid.Views.Grid.RowClickEventHandler(this.gvTrangBi_RowClick);
             this.gvTrangBi.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gvTrangBi_RowCellClick);
@@ -310,6 +311,8 @@ namespace QLKhachSan.UI
             // 
             // colSTT
             // 
+            this.colSTT.AppearanceCell.Options.UseTextOptions = true;
+            this.colSTT.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colSTT.Caption = "STT";
             this.colSTT.FieldName = "STT";
             this.colSTT.MinWidth = 25;
@@ -320,6 +323,8 @@ namespace QLKhachSan.UI
             // 
             // colSoPhong
             // 
+            this.colSoPhong.AppearanceCell.Options.UseTextOptions = true;
+            this.colSoPhong.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colSoPhong.Caption = "Số phòng";
             this.colSoPhong.FieldName = "SoPhong";
             this.colSoPhong.MinWidth = 25;
@@ -330,6 +335,8 @@ namespace QLKhachSan.UI
             // 
             // colMaThietBi
             // 
+            this.colMaThietBi.AppearanceCell.Options.UseTextOptions = true;
+            this.colMaThietBi.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colMaThietBi.Caption = "Mã thiết bị";
             this.colMaThietBi.FieldName = "MaThietBi";
             this.colMaThietBi.MinWidth = 25;
@@ -340,6 +347,8 @@ namespace QLKhachSan.UI
             // 
             // colTenThietBi
             // 
+            this.colTenThietBi.AppearanceCell.Options.UseTextOptions = true;
+            this.colTenThietBi.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colTenThietBi.Caption = "Tên thiết bị";
             this.colTenThietBi.FieldName = "TenThietBi";
             this.colTenThietBi.MinWidth = 25;
@@ -350,6 +359,8 @@ namespace QLKhachSan.UI
             // 
             // colNgayBatDauTrangBi
             // 
+            this.colNgayBatDauTrangBi.AppearanceCell.Options.UseTextOptions = true;
+            this.colNgayBatDauTrangBi.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colNgayBatDauTrangBi.Caption = "Ngày bắt đầu trang bị";
             this.colNgayBatDauTrangBi.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.colNgayBatDauTrangBi.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
@@ -362,6 +373,8 @@ namespace QLKhachSan.UI
             // 
             // colNgayKetThucTrangBi
             // 
+            this.colNgayKetThucTrangBi.AppearanceCell.Options.UseTextOptions = true;
+            this.colNgayKetThucTrangBi.AppearanceCell.TextOptions.HAlignment = DevExpress.Utils.HorzAlignment.Near;
             this.colNgayKetThucTrangBi.Caption = "Ngày kết thúc trang bị";
             this.colNgayKetThucTrangBi.DisplayFormat.FormatString = "dd/MM/yyyy";
             this.colNgayKetThucTrangBi.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;

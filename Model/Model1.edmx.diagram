@@ -4,22 +4,21 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="cb4cab97ac5d4fd8b3647a9c01b40f87" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="QLKSModel.tDichVu" Width="1.5" PointX="4.375" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKSModel.tHoaDon" Width="1.5" PointX="6.875" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKSModel.tKhach" Width="1.5" PointX="9.625" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKSModel.tPhong" Width="1.5" PointX="6.875" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKSModel.tThietBi" Width="1.5" PointX="1.875" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKSModel.tThuePhong" Width="1.5" PointX="9.625" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="QLKSModel.tTrangBi" Width="1.5" PointX="4.375" PointY="1.75" IsExpanded="true" />
+      <Diagram DiagramId="9cbffd9338da4e109c7b4abd1e2e3769" Name="Diagram1">
+        <EntityTypeShape EntityType="QLKSModel.tDichVu" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tHoaDon" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tKhach" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tNhanVien" Width="1.5" PointX="0.75" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tPhong" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tThietBi" Width="1.5" PointX="3.75" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tThuePhong" Width="1.5" PointX="3" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLKSModel.tTrangBi" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
         <AssociationConnector Association="QLKSModel.thd_fk_madichvu" ManuallyRouted="false" />
-        <AssociationConnector Association="QLKSModel.thd_fk_makhach" ManuallyRouted="false" />
-        <AssociationConnector Association="QLKSModel.thd_fk_sophong" ManuallyRouted="false" />
+        <AssociationConnector Association="QLKSModel.thd_fk_thuephong" ManuallyRouted="false" />
         <AssociationConnector Association="QLKSModel.ttp_fk_makhach" ManuallyRouted="false" />
         <AssociationConnector Association="QLKSModel.ttb_fk_sophong" ManuallyRouted="false" />
         <AssociationConnector Association="QLKSModel.ttp_fk_sophong" ManuallyRouted="false" />
         <AssociationConnector Association="QLKSModel.ttb_fk_matb" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="QLKSModel.tNhanVien" Width="1.5" PointX="2" PointY="5" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

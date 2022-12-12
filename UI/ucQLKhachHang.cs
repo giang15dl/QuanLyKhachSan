@@ -150,6 +150,10 @@ namespace QLKhachSan.UI
         {
             int numberofRows = data.tKhaches.Count();
 
+            int numberofrow = data.tKhaches
+                   .Select(x => x.MaKhach)
+                   .Count();
+
             if (numberofRows > 0)
             {
                 string maKhachLastRow = data.tKhaches
@@ -248,6 +252,11 @@ namespace QLKhachSan.UI
         private void btnHuyBo_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CLEAR();
+        }
+
+        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LoadData();
         }
 
         private void CLEAR()

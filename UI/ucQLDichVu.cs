@@ -213,7 +213,7 @@ namespace QLKhachSan.UI
 
                 if (dichvu_hoadon != null)
                 {
-                    MessageBox.Show("Xoá không thành công, dịch vụ đang có trên hóa đơn", "Thông báo");
+                    MessageBox.Show("Xoá không thành công, dịch vụ đang được bán", "Thông báo");
                     canDelete = false;
                 }
                 else if (canDelete)

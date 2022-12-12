@@ -28,10 +28,10 @@ namespace QLKhachSan.Model
         public virtual DbSet<tDichVu> tDichVus { get; set; }
         public virtual DbSet<tHoaDon> tHoaDons { get; set; }
         public virtual DbSet<tKhach> tKhaches { get; set; }
+        public virtual DbSet<tNhanVien> tNhanViens { get; set; }
         public virtual DbSet<tPhong> tPhongs { get; set; }
         public virtual DbSet<tThietBi> tThietBis { get; set; }
         public virtual DbSet<tThuePhong> tThuePhongs { get; set; }
         public virtual DbSet<tTrangBi> tTrangBis { get; set; }
-        public virtual DbSet<tNhanVien> tNhanViens { get; set; }
     }
 }

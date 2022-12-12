@@ -14,12 +14,20 @@ namespace QLKhachSan.Model
     
     public partial class tThuePhong
     {
-        public int STT { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public tThuePhong()
+        {
+            this.tHoaDons = new HashSet<tHoaDon>();
+        }
+    
+        public string MaThuePhong { get; set; }
         public string SoPhong { get; set; }
         public string MaKhach { get; set; }
         public System.DateTime NgayNhanPhong { get; set; }
         public System.DateTime NgayTraPhong { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<tHoaDon> tHoaDons { get; set; }
         public virtual tKhach tKhach { get; set; }
         public virtual tPhong tPhong { get; set; }
     }
