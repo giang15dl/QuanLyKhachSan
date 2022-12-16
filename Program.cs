@@ -19,10 +19,7 @@ namespace QLKhachSan
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            OpenLoginFormOnClose = false;
-            //Application.Run(new frmBill());
-            //Application.Run(new frmLogin2());
-            //Application.Run(new MainForm());
+            OpenLoginFormOnClose = false;       
             Application.Run(new frmLogin());
             
             if (OpenLoginFormOnClose)

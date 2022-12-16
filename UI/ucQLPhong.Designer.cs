@@ -62,10 +62,9 @@ namespace QLKhachSan.UI
             this.barbtnNhanPhong = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnXoaPhong = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnHuy = new DevExpress.XtraBars.BarButtonItem();
-            this.barbtnTraPhongCapNhatHD = new DevExpress.XtraBars.BarButtonItem();
+            this.barbtnTraPhong = new DevExpress.XtraBars.BarButtonItem();
             this.barbtnChinhSuaThongTin = new DevExpress.XtraBars.BarButtonItem();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
-            this.txtTest = new DevExpress.XtraEditors.TextEdit();
             this.gcPhong = new DevExpress.XtraGrid.GridControl();
             this.tvPhong = new DevExpress.XtraGrid.Views.Tile.TileView();
             this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
@@ -85,7 +84,6 @@ namespace QLKhachSan.UI
             this.SoPhong = new DevExpress.XtraLayout.LayoutControlItem();
             this.GiaTien = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
-            this.txt = new DevExpress.XtraLayout.LayoutControlItem();
             this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.popupMenu1 = new DevExpress.XtraBars.PopupMenu(this.components);
@@ -94,7 +92,6 @@ namespace QLKhachSan.UI
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.txtTest.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tvPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiaTien.Properties)).BeginInit();
@@ -110,7 +107,6 @@ namespace QLKhachSan.UI
             ((System.ComponentModel.ISupportInitialize)(this.SoPhong)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.GiaTien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).BeginInit();
@@ -186,7 +182,7 @@ namespace QLKhachSan.UI
             this.barbtnNhanPhong,
             this.barbtnXoaPhong,
             this.barbtnHuy,
-            this.barbtnTraPhongCapNhatHD,
+            this.barbtnTraPhong,
             this.btnRefresh,
             this.barbtnChinhSuaThongTin});
             this.barManager1.MainMenu = this.bar4;
@@ -318,16 +314,16 @@ namespace QLKhachSan.UI
             this.barbtnHuy.Name = "barbtnHuy";
             this.barbtnHuy.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnHuy_ItemClick);
             // 
-            // barbtnTraPhongCapNhatHD
+            // barbtnTraPhong
             // 
-            this.barbtnTraPhongCapNhatHD.Caption = "Trả phòng / Cập nhật HĐ";
-            this.barbtnTraPhongCapNhatHD.Id = 7;
-            this.barbtnTraPhongCapNhatHD.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnTraPhongCapNhatHD.ImageOptions.Image")));
-            this.barbtnTraPhongCapNhatHD.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barbtnTraPhongCapNhatHD.ImageOptions.LargeImage")));
-            this.barbtnTraPhongCapNhatHD.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
-            this.barbtnTraPhongCapNhatHD.ItemAppearance.Normal.Options.UseFont = true;
-            this.barbtnTraPhongCapNhatHD.Name = "barbtnTraPhongCapNhatHD";
-            this.barbtnTraPhongCapNhatHD.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnTraPhongCapNhatHD_ItemClick);
+            this.barbtnTraPhong.Caption = "Trả phòng";
+            this.barbtnTraPhong.Id = 7;
+            this.barbtnTraPhong.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("barbtnTraPhong.ImageOptions.Image")));
+            this.barbtnTraPhong.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("barbtnTraPhong.ImageOptions.LargeImage")));
+            this.barbtnTraPhong.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 10F);
+            this.barbtnTraPhong.ItemAppearance.Normal.Options.UseFont = true;
+            this.barbtnTraPhong.Name = "barbtnTraPhong";
+            this.barbtnTraPhong.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.barbtnTraPhong_ItemClick);
             // 
             // barbtnChinhSuaThongTin
             // 
@@ -342,7 +338,6 @@ namespace QLKhachSan.UI
             // 
             // layoutControl1
             // 
-            this.layoutControl1.Controls.Add(this.txtTest);
             this.layoutControl1.Controls.Add(this.gcPhong);
             this.layoutControl1.Controls.Add(this.labelControl3);
             this.layoutControl1.Controls.Add(this.labelDangO);
@@ -360,22 +355,13 @@ namespace QLKhachSan.UI
             this.layoutControl1.TabIndex = 20;
             this.layoutControl1.Text = "layoutControl1";
             // 
-            // txtTest
-            // 
-            this.txtTest.Location = new System.Drawing.Point(130, 170);
-            this.txtTest.MenuManager = this.barManager1;
-            this.txtTest.Name = "txtTest";
-            this.txtTest.Size = new System.Drawing.Size(974, 22);
-            this.txtTest.StyleController = this.layoutControl1;
-            this.txtTest.TabIndex = 25;
-            // 
             // gcPhong
             // 
             this.gcPhong.DataSource = this.tPhongBindingSource;
-            this.gcPhong.Location = new System.Drawing.Point(12, 273);
+            this.gcPhong.Location = new System.Drawing.Point(12, 248);
             this.gcPhong.MainView = this.tvPhong;
             this.gcPhong.Name = "gcPhong";
-            this.gcPhong.Size = new System.Drawing.Size(1104, 300);
+            this.gcPhong.Size = new System.Drawing.Size(1104, 325);
             this.gcPhong.TabIndex = 24;
             this.gcPhong.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.tvPhong});
@@ -469,7 +455,7 @@ namespace QLKhachSan.UI
             // 
             this.labelControl3.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl3.Appearance.Options.UseFont = true;
-            this.labelControl3.Location = new System.Drawing.Point(136, 218);
+            this.labelControl3.Location = new System.Drawing.Point(136, 193);
             this.labelControl3.Name = "labelControl3";
             this.labelControl3.Padding = new System.Windows.Forms.Padding(5);
             this.labelControl3.Size = new System.Drawing.Size(71, 31);
@@ -485,7 +471,7 @@ namespace QLKhachSan.UI
             this.labelDangO.Appearance.Options.UseBackColor = true;
             this.labelDangO.Appearance.Options.UseFont = true;
             this.labelDangO.Appearance.Options.UseForeColor = true;
-            this.labelDangO.Location = new System.Drawing.Point(109, 218);
+            this.labelDangO.Location = new System.Drawing.Point(109, 193);
             this.labelDangO.Name = "labelDangO";
             this.labelDangO.Padding = new System.Windows.Forms.Padding(5);
             this.labelDangO.Size = new System.Drawing.Size(23, 34);
@@ -501,7 +487,7 @@ namespace QLKhachSan.UI
             this.labelTrong.Appearance.Options.UseBackColor = true;
             this.labelTrong.Appearance.Options.UseFont = true;
             this.labelTrong.Appearance.Options.UseForeColor = true;
-            this.labelTrong.Location = new System.Drawing.Point(17, 218);
+            this.labelTrong.Location = new System.Drawing.Point(17, 193);
             this.labelTrong.Name = "labelTrong";
             this.labelTrong.Padding = new System.Windows.Forms.Padding(5);
             this.labelTrong.Size = new System.Drawing.Size(24, 37);
@@ -513,7 +499,7 @@ namespace QLKhachSan.UI
             // 
             this.labelControl1.Appearance.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
             this.labelControl1.Appearance.Options.UseFont = true;
-            this.labelControl1.Location = new System.Drawing.Point(45, 218);
+            this.labelControl1.Location = new System.Drawing.Point(45, 193);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Padding = new System.Windows.Forms.Padding(5);
             this.labelControl1.Size = new System.Drawing.Size(60, 31);
@@ -583,7 +569,7 @@ namespace QLKhachSan.UI
             // layoutControlItem3
             // 
             this.layoutControlItem3.Control = this.labelTrong;
-            this.layoutControlItem3.Location = new System.Drawing.Point(0, 206);
+            this.layoutControlItem3.Location = new System.Drawing.Point(0, 181);
             this.layoutControlItem3.Name = "layoutControlItem3";
             this.layoutControlItem3.Size = new System.Drawing.Size(33, 55);
             this.layoutControlItem3.Spacing = new DevExpress.XtraLayout.Utils.Padding(5, 0, 0, 0);
@@ -593,7 +579,7 @@ namespace QLKhachSan.UI
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.labelControl1;
-            this.layoutControlItem2.Location = new System.Drawing.Point(33, 206);
+            this.layoutControlItem2.Location = new System.Drawing.Point(33, 181);
             this.layoutControlItem2.Name = "layoutControlItem2";
             this.layoutControlItem2.Size = new System.Drawing.Size(64, 55);
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -602,7 +588,7 @@ namespace QLKhachSan.UI
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.labelControl3;
-            this.layoutControlItem5.Location = new System.Drawing.Point(124, 206);
+            this.layoutControlItem5.Location = new System.Drawing.Point(124, 181);
             this.layoutControlItem5.Name = "layoutControlItem5";
             this.layoutControlItem5.Size = new System.Drawing.Size(984, 35);
             this.layoutControlItem5.TextSize = new System.Drawing.Size(0, 0);
@@ -611,7 +597,7 @@ namespace QLKhachSan.UI
             // layoutControlItem4
             // 
             this.layoutControlItem4.Control = this.labelDangO;
-            this.layoutControlItem4.Location = new System.Drawing.Point(97, 206);
+            this.layoutControlItem4.Location = new System.Drawing.Point(97, 181);
             this.layoutControlItem4.Name = "layoutControlItem4";
             this.layoutControlItem4.Size = new System.Drawing.Size(27, 55);
             this.layoutControlItem4.TextSize = new System.Drawing.Size(0, 0);
@@ -620,7 +606,7 @@ namespace QLKhachSan.UI
             // emptySpaceItem2
             // 
             this.emptySpaceItem2.AllowHotTrack = false;
-            this.emptySpaceItem2.Location = new System.Drawing.Point(124, 241);
+            this.emptySpaceItem2.Location = new System.Drawing.Point(124, 216);
             this.emptySpaceItem2.MaxSize = new System.Drawing.Size(0, 20);
             this.emptySpaceItem2.MinSize = new System.Drawing.Size(104, 20);
             this.emptySpaceItem2.Name = "emptySpaceItem2";
@@ -633,11 +619,10 @@ namespace QLKhachSan.UI
             this.layoutControlGroup1.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.SoPhong,
             this.GiaTien,
-            this.layoutControlItem6,
-            this.txt});
+            this.layoutControlItem6});
             this.layoutControlGroup1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup1.Name = "layoutControlGroup1";
-            this.layoutControlGroup1.Size = new System.Drawing.Size(1108, 196);
+            this.layoutControlGroup1.Size = new System.Drawing.Size(1108, 170);
             this.layoutControlGroup1.Text = "Thông tin phòng";
             // 
             // SoPhong
@@ -691,30 +676,21 @@ namespace QLKhachSan.UI
             this.layoutControlItem6.Text = "Tình trạng:";
             this.layoutControlItem6.TextSize = new System.Drawing.Size(94, 21);
             // 
-            // txt
-            // 
-            this.txt.Control = this.txtTest;
-            this.txt.Location = new System.Drawing.Point(0, 120);
-            this.txt.Name = "txt";
-            this.txt.Size = new System.Drawing.Size(1084, 26);
-            this.txt.Text = "Test:";
-            this.txt.TextSize = new System.Drawing.Size(94, 16);
-            // 
             // emptySpaceItem1
             // 
             this.emptySpaceItem1.AllowHotTrack = false;
-            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 196);
+            this.emptySpaceItem1.Location = new System.Drawing.Point(0, 170);
             this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(1108, 10);
+            this.emptySpaceItem1.Size = new System.Drawing.Size(1108, 11);
             this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
             // 
             // layoutControlItem1
             // 
             this.layoutControlItem1.Control = this.gcPhong;
-            this.layoutControlItem1.Location = new System.Drawing.Point(0, 261);
+            this.layoutControlItem1.Location = new System.Drawing.Point(0, 236);
             this.layoutControlItem1.MinSize = new System.Drawing.Size(104, 24);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(1108, 304);
+            this.layoutControlItem1.Size = new System.Drawing.Size(1108, 329);
             this.layoutControlItem1.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem1.TextVisible = false;
@@ -723,7 +699,6 @@ namespace QLKhachSan.UI
             // 
             this.popupMenu1.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnNhanPhong),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barbtnChinhSuaThongTin),
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnHuy)});
             this.popupMenu1.Manager = this.barManager1;
             this.popupMenu1.Name = "popupMenu1";
@@ -731,7 +706,8 @@ namespace QLKhachSan.UI
             // popupMenu2
             // 
             this.popupMenu2.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barbtnTraPhongCapNhatHD),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barbtnTraPhong),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barbtnChinhSuaThongTin),
             new DevExpress.XtraBars.LinkPersistInfo(this.barbtnHuy)});
             this.popupMenu2.Manager = this.barManager1;
             this.popupMenu2.Name = "popupMenu2";
@@ -752,7 +728,6 @@ namespace QLKhachSan.UI
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.txtTest.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gcPhong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tvPhong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtGiaTien.Properties)).EndInit();
@@ -768,7 +743,6 @@ namespace QLKhachSan.UI
             ((System.ComponentModel.ISupportInitialize)(this.SoPhong)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.GiaTien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txt)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu1)).EndInit();
@@ -820,10 +794,8 @@ namespace QLKhachSan.UI
         private DevExpress.XtraBars.BarButtonItem barbtnNhanPhong;
         private DevExpress.XtraBars.PopupMenu popupMenu1;
         private DevExpress.XtraBars.BarButtonItem barbtnXoaPhong;
-        private DevExpress.XtraEditors.TextEdit txtTest;
-        private DevExpress.XtraLayout.LayoutControlItem txt;
         private DevExpress.XtraBars.BarButtonItem barbtnHuy;
-        private DevExpress.XtraBars.BarButtonItem barbtnTraPhongCapNhatHD;
+        private DevExpress.XtraBars.BarButtonItem barbtnTraPhong;
         private DevExpress.XtraBars.BarButtonItem btnRefresh;
         private DevExpress.XtraBars.PopupMenu popupMenu2;
         private DevExpress.XtraBars.BarButtonItem barbtnChinhSuaThongTin;

@@ -293,3 +293,5 @@ E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\es\
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\ja\DevExpress.Diagram.v22.1.Core.resources.dll
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\bin\Debug\Guna.UI2.dll
 E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.ucQLDoanhThu.resources
+E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.banner.resources
+E:\HAN\Software Engineer\02-Software Engineering\Lab\01\QLKhachSan\obj\Debug\QLKhachSan.UI.about.resources

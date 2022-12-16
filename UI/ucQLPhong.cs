@@ -305,8 +305,6 @@ namespace QLKhachSan.UI
 
         private void tvPhong_ItemRightClick(object sender, TileViewItemClickEventArgs e)
         {
-            //popupMenu1.ShowPopup(Control.MousePosition);
-
             string tinhtrang = data.tPhongs.Where(x => x.SoPhong == this.txtSoPhong_currentFocus).Select(y => y.TinhTrang).FirstOrDefault();
 
             if (tinhtrang.Equals("Trong"))
@@ -330,13 +328,16 @@ namespace QLKhachSan.UI
 
         private void barbtnChinhSuaThongTin_ItemClick(object sender, ItemClickEventArgs e)
         {
-            MessageBox.Show("Chỉnh sửa thông tin", "Thông báo");
+            FrmQLDatPhong = new frmQLDatPhong(this.txtSoPhong_currentFocus);
+            FrmQLDatPhong.TopLevel = false;
+            FrmQLDatPhong.Dock = DockStyle.Fill;
+            this.mainForm.showFormQLDatPhong(FrmQLDatPhong);
         }
 
-        private void barbtnTraPhongCapNhatHD_ItemClick(object sender, ItemClickEventArgs e)
+        private void barbtnTraPhong_ItemClick(object sender, ItemClickEventArgs e)
         {
 
-            MessageBox.Show("Trả phòng / Cập nhật HĐ", "Thông báo");
+            MessageBox.Show("Trả phòng", "Thông báo");
         }
 
         private void barbtnHuy_ItemClick(object sender, ItemClickEventArgs e)
@@ -349,7 +350,5 @@ namespace QLKhachSan.UI
             LoadData();
             updateLabel();
         }
-
-
     }
 }

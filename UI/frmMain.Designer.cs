@@ -52,7 +52,7 @@ namespace QLKhachSan
             this.menuHoTro = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuDuongDayNong = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuThongTinPhanMem = new DevExpress.XtraBars.Navigation.AccordionControlElement();
-            this.menuLienHeNhaPhatTrien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
+            this.menuNhaPhatTrien = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.menuHuongDanCaiDat = new DevExpress.XtraBars.Navigation.AccordionControlElement();
             this.fluentDesignFormControl1 = new DevExpress.XtraBars.FluentDesignSystem.FluentDesignFormControl();
             this.itemNav = new DevExpress.XtraBars.BarStaticItem();
@@ -67,9 +67,9 @@ namespace QLKhachSan
             // 
             this.mainContainer.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.mainContainer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainContainer.Location = new System.Drawing.Point(353, 54);
+            this.mainContainer.Location = new System.Drawing.Point(333, 54);
             this.mainContainer.Name = "mainContainer";
-            this.mainContainer.Size = new System.Drawing.Size(503, 616);
+            this.mainContainer.Size = new System.Drawing.Size(523, 616);
             this.mainContainer.TabIndex = 0;
             // 
             // accordionControl1
@@ -87,7 +87,7 @@ namespace QLKhachSan
             this.accordionControl1.Location = new System.Drawing.Point(0, 54);
             this.accordionControl1.Name = "accordionControl1";
             this.accordionControl1.ScrollBarMode = DevExpress.XtraBars.Navigation.ScrollBarMode.Touch;
-            this.accordionControl1.Size = new System.Drawing.Size(353, 616);
+            this.accordionControl1.Size = new System.Drawing.Size(333, 616);
             this.accordionControl1.TabIndex = 1;
             this.accordionControl1.ViewType = DevExpress.XtraBars.Navigation.AccordionControlViewType.HamburgerMenu;
             // 
@@ -246,23 +246,26 @@ namespace QLKhachSan
             // menuThongTinPhanMem
             // 
             this.menuThongTinPhanMem.Elements.AddRange(new DevExpress.XtraBars.Navigation.AccordionControlElement[] {
-            this.menuLienHeNhaPhatTrien,
+            this.menuNhaPhatTrien,
             this.menuHuongDanCaiDat});
+            this.menuThongTinPhanMem.Expanded = true;
             this.menuThongTinPhanMem.ImageOptions.Image = global::QLKhachSan.Properties.Resources.info;
             this.menuThongTinPhanMem.Name = "menuThongTinPhanMem";
             this.menuThongTinPhanMem.Text = "Thông tin phần mềm";
             // 
-            // menuLienHeNhaPhatTrien
+            // menuNhaPhatTrien
             // 
-            this.menuLienHeNhaPhatTrien.Name = "menuLienHeNhaPhatTrien";
-            this.menuLienHeNhaPhatTrien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
-            this.menuLienHeNhaPhatTrien.Text = "Liên hệ nhà phát triển";
+            this.menuNhaPhatTrien.Name = "menuNhaPhatTrien";
+            this.menuNhaPhatTrien.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
+            this.menuNhaPhatTrien.Text = "Nhà phát triển";
+            this.menuNhaPhatTrien.Click += new System.EventHandler(this.menuNhaPhatTrien_Click);
             // 
             // menuHuongDanCaiDat
             // 
             this.menuHuongDanCaiDat.Name = "menuHuongDanCaiDat";
             this.menuHuongDanCaiDat.Style = DevExpress.XtraBars.Navigation.ElementStyle.Item;
             this.menuHuongDanCaiDat.Text = "Hướng dẫn cài đặt";
+            this.menuHuongDanCaiDat.Click += new System.EventHandler(this.menuHuongDanCaiDat_Click);
             // 
             // fluentDesignFormControl1
             // 
@@ -282,7 +285,7 @@ namespace QLKhachSan
             // 
             // itemNav
             // 
-            this.itemNav.Caption = "???";
+            this.itemNav.Caption = "Quản lý khách sạn";
             this.itemNav.Id = 0;
             this.itemNav.ItemAppearance.Normal.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold);
             this.itemNav.ItemAppearance.Normal.Options.UseFont = true;
@@ -350,7 +353,7 @@ namespace QLKhachSan
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuDuongDayNong;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuQuanLyPhong;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuThongTinPhanMem;
-        private DevExpress.XtraBars.Navigation.AccordionControlElement menuLienHeNhaPhatTrien;
+        private DevExpress.XtraBars.Navigation.AccordionControlElement menuNhaPhatTrien;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuDoanhThu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuQuanLyDoanhThu;
         private DevExpress.XtraBars.Navigation.AccordionControlElement menuThongKe;

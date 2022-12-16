@@ -18,12 +18,14 @@ namespace QLKhachSan
     {
         ucQLPhong uc_QLPhong;
         ucQLThietBi uc_QLThietBi;
+        ucQLTrangBi uc_QLTrangBi;
         ucQLDichVu uc_QLDichVu;
         ucQLKhachHang uc_QLKhachHang;
-        ucQLDoanhThu uc_DoanhThuChiTiet;
+        ucQLDoanhThu uc_QLDoanhThu;
         ucDanhSachHoaDon uc_DanhSachHoaDon;
         ucBaoCao uc_BaoCao;
-        ucQLTrangBi uc_QLTrangBi;
+        banner Banner;
+        about About;
 
         public MainForm()
         {
@@ -32,6 +34,7 @@ namespace QLKhachSan
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            loadBanner();
         }
 
         public void showFormQLDatPhong(frmQLDatPhong frm) 
@@ -73,6 +76,11 @@ namespace QLKhachSan
             base.WndProc(ref message);
         }
 
+        private async void loadBanner()
+        {
+            await LoadModuleAsync("Banner");
+        }
+
         private async void menuQuanLyPhong_Click(object sender, EventArgs e)
         {
             await LoadModuleAsync("uc_QLPhong");
@@ -105,8 +113,8 @@ namespace QLKhachSan
 
         private async void menuQuanLyDoanhThu_Click(object sender, EventArgs e)
         {
-            await LoadModuleAsync("uc_DoanhThuChiTiet");
-            this.itemNav.Caption = "Doanh thu / Doanh thu chi tiết";
+            await LoadModuleAsync("uc_QuanLyDoanhThu");
+            this.itemNav.Caption = "Doanh thu / Quản lý doanh thu";
         }
 
         private async void menuDanhSachHoaDon_Click(object sender, EventArgs e)
@@ -129,6 +137,18 @@ namespace QLKhachSan
         private void menuNhomPhanQuyen_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void menuNhaPhatTrien_Click(object sender, EventArgs e)
+        {
+            await LoadModuleAsync("About");
+            this.itemNav.Caption = "Thông tin phần mềm / Nhà phát triển";
+        }
+
+        private async void menuHuongDanCaiDat_Click(object sender, EventArgs e)
+        {
+            await LoadModuleAsync("Banner");
+            this.itemNav.Caption = "Quản lý khách sạn";
         }
 
         public async Task LoadModuleAsync(string name)
@@ -283,26 +303,26 @@ namespace QLKhachSan
                     }
                 });
             }
-            else if (name.Equals("uc_DoanhThuChiTiet"))
+            else if (name.Equals("uc_QLDoanhThu"))
             {
                 await Task.Factory.StartNew(() =>
                 {
-                    if (!mainContainer.Controls.Contains(uc_DoanhThuChiTiet))
+                    if (!mainContainer.Controls.Contains(uc_QLDoanhThu))
                     {
-                        uc_DoanhThuChiTiet = new ucQLDoanhThu();
-                        if (uc_DoanhThuChiTiet != null)
+                        uc_QLDoanhThu = new ucQLDoanhThu();
+                        if (uc_QLDoanhThu != null)
                         {
-                            uc_DoanhThuChiTiet.Dock = DockStyle.Fill;
+                            uc_QLDoanhThu.Dock = DockStyle.Fill;
                             mainContainer.Invoke(new MethodInvoker(delegate ()
                             {
-                                mainContainer.Controls.Add(uc_DoanhThuChiTiet);
-                                uc_DoanhThuChiTiet.BringToFront();
+                                mainContainer.Controls.Add(uc_QLDoanhThu);
+                                uc_QLDoanhThu.BringToFront();
                             }));
                         }
                     }
                     else
                     {
-                        var temp = mainContainer.Controls.Find(uc_DoanhThuChiTiet.Name, true);
+                        var temp = mainContainer.Controls.Find(uc_QLDoanhThu.Name, true);
                         if (temp.Length == 1)
                         {
                             mainContainer.Invoke(new MethodInvoker(delegate ()
@@ -326,7 +346,7 @@ namespace QLKhachSan
                             mainContainer.Invoke(new MethodInvoker(delegate ()
                             {
                                 mainContainer.Controls.Add(uc_DanhSachHoaDon);
-                                uc_DoanhThuChiTiet.BringToFront();
+                                uc_DanhSachHoaDon.BringToFront();
                             }));
                         }
                     }
@@ -363,6 +383,66 @@ namespace QLKhachSan
                     else
                     {
                         var temp = mainContainer.Controls.Find(uc_BaoCao.Name, true);
+                        if (temp.Length == 1)
+                        {
+                            mainContainer.Invoke(new MethodInvoker(delegate ()
+                            {
+                                temp[0].BringToFront();
+                            }));
+                        }
+                    }
+                });
+            }
+            else if (name.Equals("Banner"))
+            {
+                await Task.Factory.StartNew(() =>
+                {
+                    if (!mainContainer.Controls.Contains(Banner))
+                    {
+                        Banner = new banner();
+                        if (Banner != null)
+                        {
+                            Banner.Dock = DockStyle.Fill;
+                            mainContainer.Invoke(new MethodInvoker(delegate ()
+                            {
+                                mainContainer.Controls.Add(Banner);
+                                Banner.BringToFront();
+                            }));
+                        }
+                    }
+                    else
+                    {
+                        var temp = mainContainer.Controls.Find(Banner.Name, true);
+                        if (temp.Length == 1)
+                        {
+                            mainContainer.Invoke(new MethodInvoker(delegate ()
+                            {
+                                temp[0].BringToFront();
+                            }));
+                        }
+                    }
+                });
+            }
+            else if (name.Equals("About"))
+            {
+                await Task.Factory.StartNew(() =>
+                {
+                    if (!mainContainer.Controls.Contains(About))
+                    {
+                        About = new about();
+                        if (About != null)
+                        {
+                            About.Dock = DockStyle.Fill;
+                            mainContainer.Invoke(new MethodInvoker(delegate ()
+                            {
+                                mainContainer.Controls.Add(About);
+                                About.BringToFront();
+                            }));
+                        }
+                    }
+                    else
+                    {
+                        var temp = mainContainer.Controls.Find(About.Name, true);
                         if (temp.Length == 1)
                         {
                             mainContainer.Invoke(new MethodInvoker(delegate ()

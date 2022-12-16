@@ -207,6 +207,18 @@
     <Compile Include="Model\tTrangBi.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="UI\about.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\about.designer.cs">
+      <DependentUpon>about.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\banner.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\banner.designer.cs">
+      <DependentUpon>banner.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\frmBill.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -304,6 +316,12 @@
     <Compile Include="UI\XtraReport1.Designer.cs">
       <DependentUpon>XtraReport1.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\about.resx">
+      <DependentUpon>about.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\banner.resx">
+      <DependentUpon>banner.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\frmBill.resx">
       <DependentUpon>frmBill.cs</DependentUpon>
     </EmbeddedResource>
@@ -458,6 +476,8 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Resources\about.jpg" />
+    <Content Include="Resources\banner_hotel.jpg" />
     <Content Include="SqlServerTypes\readme.htm" />
     <Content Include="SqlServerTypes\x64\msvcr120.dll">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

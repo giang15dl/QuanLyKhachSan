@@ -15,9 +15,9 @@ namespace QLKhachSan.UI
 {
     public partial class frmQLDatPhong : DevExpress.XtraEditors.XtraForm
     {
-        string maThuePhong;
-        string soPhong;
-        string maKhach;
+        string maThuePhong = "";
+        string soPhong = "";
+        string maKhach = "";
 
         string NhanPhongOrChinhSua;
 
@@ -38,7 +38,7 @@ namespace QLKhachSan.UI
             {
                 this.NhanPhongOrChinhSua = "nhan";
             }
-            else if (tinhtrang.Equals("Trong"))
+            else if (tinhtrang.Equals("DangO"))
             {
                 this.NhanPhongOrChinhSua = "sua";
             }
@@ -75,6 +75,7 @@ namespace QLKhachSan.UI
 
             List<tDichVu> lstDichVu = data.tDichVus.ToList();
             var columnDichVu = from t in lstDichVu
+                               where t.MaDichVu != "DV01"
                                select new
                                {
                                    MaDichVu = t.MaDichVu,
@@ -107,7 +108,6 @@ namespace QLKhachSan.UI
                 txtDienThoai.Text = "";
 
                 this.btnNhanPhong.Text = "Nhận phòng";
-                this.btnNhanPhong.Enabled = false;
             }
             else if (this.NhanPhongOrChinhSua.Equals("sua"))
             {
@@ -149,9 +149,10 @@ namespace QLKhachSan.UI
                     .Select(y => y.DienThoai)
                     .FirstOrDefault();
 
-                LoadKhachHangToGridView(this.maKhach);
+                LoadKhachHangToGridView();
+                LoadDichVuBanToGridView();
 
-                this.btnNhanPhong.Text = "Trả phòng";
+                this.btnNhanPhong.Text = "Lưu";
             }  
         }
 
@@ -171,7 +172,7 @@ namespace QLKhachSan.UI
                     };
                     data.tKhaches.Add(khach);
                     data.SaveChanges();
-                    LoadKhachHangToGridView(maKhach);
+                    LoadKhachHangToGridView();
 
                     this.maThuePhong = autoGenarateMaThuePhong();
                     var thuephong = new tThuePhong
@@ -185,7 +186,10 @@ namespace QLKhachSan.UI
                     data.tThuePhongs.Add(thuephong);
                     data.SaveChanges();
 
-                    double thanhtien = data.tPhongs.Where(x => x.SoPhong == this.soPhong).Select(y => y.GiaTien).FirstOrDefault();
+                    double thanhtien = data.tPhongs
+                        .Where(x => x.SoPhong == this.soPhong)
+                        .Select(y => y.GiaTien)
+                        .FirstOrDefault();
                     var hoadon = new tHoaDon
                     {
                         MaThuePhong = this.maThuePhong,
@@ -193,13 +197,12 @@ namespace QLKhachSan.UI
                         MaKhach = this.maKhach,
                         MaDichVu = "DV01",
                         Soluong = 1,
-                        ThanhTien = thanhtien
+                        ThanhTien = thanhtien,
+                        DaThanhToan = "No"
                     };
                     data.tHoaDons.Add(hoadon);
                     data.SaveChanges();
                     LoadDichVuBanToGridView();
-
-                    this.btnNhanPhong.Enabled = true;
                 }
             }
             else
@@ -215,9 +218,46 @@ namespace QLKhachSan.UI
                     khach.DienThoai = txtDienThoai.Text.Trim();
 
                     data.SaveChanges();
-                    LoadKhachHangToGridView(maKhach);
+                    LoadKhachHangToGridView();
                 }
             }
+        }
+
+        private void columnEditBtnXoa1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var hoadon = data.tHoaDons
+                    .Where(x => x.MaThuePhong == this.maThuePhong && x.SoPhong == this.soPhong && x.MaKhach == this.maKhach)
+                    .FirstOrDefault();
+            if (hoadon != null)
+            {
+                data.tHoaDons.Remove(hoadon);
+                data.SaveChanges();
+            }
+
+            var thuephong = data.tThuePhongs
+                    .Where(x => x.MaThuePhong == this.maThuePhong && x.SoPhong == this.soPhong && x.MaKhach == this.maKhach)
+                    .FirstOrDefault();
+            if (thuephong != null)
+            {
+                data.tThuePhongs.Remove(thuephong);
+                data.SaveChanges();
+            }
+
+            var khachhang = data.tKhaches
+                .Where(x => x.MaKhach == this.maKhach)
+                .FirstOrDefault();
+            if (khachhang != null)
+            {
+                data.tKhaches.Remove(khachhang);
+                data.SaveChanges();
+                this.maKhach = "";
+                txtTenKhach.Text = "";
+                txtSoCMND.Text = "";
+                txtDienThoai.Text = "";
+            }
+
+            LoadKhachHangToGridView();
+            LoadDichVuBanToGridView();
         }
 
         private bool ValidateDataKhachHang()
@@ -295,12 +335,12 @@ namespace QLKhachSan.UI
             return "K001";
         }
 
-        private void LoadKhachHangToGridView(string maKhach)
+        private void LoadKhachHangToGridView()
         {
             List<tKhach> lstKhach = data.tKhaches.ToList();
             int i = 0;
             var columns = from t in lstKhach
-                          where t.MaKhach == maKhach
+                          where t.MaKhach == this.maKhach
                           select new
                           {
                               STT = ++i,
@@ -375,7 +415,8 @@ namespace QLKhachSan.UI
                     MaKhach = this.maKhach,
                     MaDichVu = leDichVu.EditValue.ToString().Trim(),
                     Soluong = int.Parse(cboSoLuongMua.EditValue.ToString().Trim()),
-                    ThanhTien = tinhTienDichVu()
+                    ThanhTien = tinhTienDichVu(),
+                    DaThanhToan = "No"
                 };
                 data.tHoaDons.Add(hoadon);
                 data.SaveChanges();
@@ -384,8 +425,36 @@ namespace QLKhachSan.UI
             }
         }
 
+        private void columnEditBtnXoa2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
+        {
+            var madichvu = gvDanhSachDichVu.GetFocusedRowCellValue(colMaDichVu).ToString();
+
+            var hoadon = data.tHoaDons
+                .Where(x => x.MaThuePhong == this.maThuePhong
+                && x.SoPhong == this.soPhong
+                && x.MaKhach == this.maKhach
+                && x.MaDichVu == madichvu)
+                .FirstOrDefault();
+            if (hoadon.MaDichVu == "DV01")
+            {
+                MessageBox.Show("Không xóa được tiền phòng", "Thông báo");
+            }
+            else
+            {
+                data.tHoaDons.Remove(hoadon);
+                data.SaveChanges();
+                LoadDichVuBanToGridView();
+            }
+        }
+
         private bool ValidateDataDichVuBan()
         {
+            if (this.maKhach.Equals(""))
+            {
+                MessageBox.Show("Chưa có thông tin khách hàng", "Thông báo");
+                return false;
+            }
+
             if (string.IsNullOrEmpty(leDichVu.EditValue.ToString().Trim()))
             {
                 MessageBox.Show("Tên dịch vụ trống", "Thông báo");
@@ -397,6 +466,14 @@ namespace QLKhachSan.UI
                 MessageBox.Show("Số lượng mua trống", "Thông báo");
                 return false;
             }
+
+            var isDichVuDuplicate = data.tHoaDons
+                .Where(x => x.MaThuePhong == this.maThuePhong
+                && x.SoPhong == this.soPhong
+                && x.MaKhach == this.maKhach
+                && x.MaDichVu == leDichVu.EditValue.ToString().Trim())
+                .FirstOrDefault();
+
             return true;
         }
 
@@ -423,11 +500,24 @@ namespace QLKhachSan.UI
                               STT = ++i,
                               MaDichVu = t.MaDichVu,
                               TenDichVu = t.tDichVu.TenDichVu,
-                              DonGia = t.tDichVu.GiaDichVu,
+                              DonGia = getDonGia(t.tDichVu.GiaDichVu, t.MaDichVu),
                               SoLuong = t.Soluong,
                               ThanhTien = t.ThanhTien
                           };
             gcDanhSachDichVu.DataSource = columns.ToList();
+        }
+
+        private int getDonGia(int giaDichVu, string maDichVu)
+        {
+            if (maDichVu.Equals("DV01"))
+            {
+                int dongia = data.tPhongs
+                    .Where(x => x.SoPhong == this.soPhong)
+                    .Select(x => x.GiaTien)
+                    .FirstOrDefault();
+                return dongia;
+            }
+            return giaDichVu;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -477,58 +567,6 @@ namespace QLKhachSan.UI
             this.Close();
         }
         
-        private void columnEditBtnXoa1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            var hoadon = data.tHoaDons
-                    .Where(x => x.MaThuePhong == this.maThuePhong && x.SoPhong == this.soPhong && x.MaKhach == this.maKhach)
-                    .FirstOrDefault();
-            if (hoadon != null)
-            {
-                data.tHoaDons.Remove(hoadon);
-                data.SaveChanges();
-            }
-
-            var thuephong = data.tThuePhongs
-                    .Where(x => x.MaThuePhong == this.maThuePhong && x.SoPhong == this.soPhong && x.MaKhach == this.maKhach)
-                    .FirstOrDefault();
-            if (thuephong != null)
-            {
-                data.tThuePhongs.Remove(thuephong);
-                data.SaveChanges();
-            }
-
-            var khachhang = data.tKhaches
-                .Where(x => x.MaKhach == this.maKhach)
-                .FirstOrDefault();
-            if (khachhang != null)
-            {
-                data.tKhaches.Remove(khachhang);
-                data.SaveChanges();
-            }
-        }
-
-        private void columnEditBtnXoa2_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
-        {
-            var madichvu = gvDanhSachDichVu.GetFocusedRowCellValue(colMaDichVu).ToString();
-
-            var hoadon = data.tHoaDons
-                .Where(x => x.MaThuePhong == this.maThuePhong
-                && x.SoPhong == this.soPhong
-                && x.MaKhach == this.maKhach
-                && x.MaDichVu == madichvu)
-                .FirstOrDefault();
-            if (hoadon.MaDichVu == "DV01")
-            {
-                MessageBox.Show("Không xóa được tiền phòng", "Thông báo");
-            }
-            else
-            {
-                data.tHoaDons.Remove(hoadon);
-                data.SaveChanges();
-                LoadDichVuBanToGridView();
-            }
-        }
-
         private void txtSoCMND_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != '.'))

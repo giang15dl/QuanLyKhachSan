@@ -61,5 +61,10 @@ namespace QLKhachSan.UI
                 .FirstOrDefault();
             return tendichvu;
         }
+
+        private void btnRefresh_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LoadData();
+        }
     }
 }

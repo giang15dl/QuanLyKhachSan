@@ -30,16 +30,17 @@ namespace QLKhachSan.UI
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLogin));
             this.guna2Elipse1 = new Guna.UI2.WinForms.Guna2Elipse(this.components);
-            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2ControlBox1 = new Guna.UI2.WinForms.Guna2ControlBox();
+            this.btnExit = new Guna.UI2.WinForms.Guna2ControlBox();
             this.guna2CirclePictureBox1 = new Guna.UI2.WinForms.Guna2CirclePictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.txtUsername = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtPassword = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2DragControl1 = new Guna.UI2.WinForms.Guna2DragControl(this.components);
-            this.label2 = new System.Windows.Forms.Label();
+            this.lbForgotPassword = new System.Windows.Forms.Label();
             this.btnLogin = new Guna.UI2.WinForms.Guna2GradientButton();
+            this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,31 +48,21 @@ namespace QLKhachSan.UI
             // 
             this.guna2Elipse1.TargetControl = this;
             // 
-            // guna2Panel1
+            // btnExit
             // 
-            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
-            this.guna2Panel1.BackgroundImage = global::QLKhachSan.Properties.Resources.qlks_background;
-            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
-            this.guna2Panel1.Name = "guna2Panel1";
-            this.guna2Panel1.Size = new System.Drawing.Size(767, 642);
-            this.guna2Panel1.TabIndex = 0;
-            // 
-            // guna2ControlBox1
-            // 
-            this.guna2ControlBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.guna2ControlBox1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(177)))), ((int)(((byte)(240)))));
-            this.guna2ControlBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.guna2ControlBox1.HoverState.FillColor = System.Drawing.Color.Goldenrod;
-            this.guna2ControlBox1.IconColor = System.Drawing.Color.White;
-            this.guna2ControlBox1.Location = new System.Drawing.Point(1093, 8);
-            this.guna2ControlBox1.Name = "guna2ControlBox1";
-            this.guna2ControlBox1.Size = new System.Drawing.Size(37, 33);
-            this.guna2ControlBox1.TabIndex = 1;
+            this.btnExit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnExit.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(86)))), ((int)(((byte)(177)))), ((int)(((byte)(240)))));
+            this.btnExit.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExit.HoverState.FillColor = System.Drawing.Color.Goldenrod;
+            this.btnExit.IconColor = System.Drawing.Color.White;
+            this.btnExit.Location = new System.Drawing.Point(1093, 8);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(37, 33);
+            this.btnExit.TabIndex = 4;
             // 
             // guna2CirclePictureBox1
             // 
+            this.guna2CirclePictureBox1.Enabled = false;
             this.guna2CirclePictureBox1.FillColor = System.Drawing.Color.Transparent;
             this.guna2CirclePictureBox1.Image = global::QLKhachSan.Properties.Resources.login;
             this.guna2CirclePictureBox1.ImageRotate = 0F;
@@ -86,12 +77,13 @@ namespace QLKhachSan.UI
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Enabled = false;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(240)))));
             this.label1.Location = new System.Drawing.Point(864, 181);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(193, 39);
-            this.label1.TabIndex = 3;
+            this.label1.Size = new System.Drawing.Size(185, 38);
+            this.label1.TabIndex = 0;
             this.label1.Text = "Đăng nhập";
             // 
             // txtUsername
@@ -115,7 +107,7 @@ namespace QLKhachSan.UI
             this.txtUsername.SelectedText = "";
             this.txtUsername.Size = new System.Drawing.Size(308, 48);
             this.txtUsername.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtUsername.TabIndex = 4;
+            this.txtUsername.TabIndex = 1;
             this.txtUsername.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // txtPassword
@@ -139,7 +131,7 @@ namespace QLKhachSan.UI
             this.txtPassword.SelectedText = "";
             this.txtPassword.Size = new System.Drawing.Size(308, 48);
             this.txtPassword.Style = Guna.UI2.WinForms.Enums.TextBoxStyle.Material;
-            this.txtPassword.TabIndex = 5;
+            this.txtPassword.TabIndex = 2;
             this.txtPassword.TextOffset = new System.Drawing.Point(10, 0);
             // 
             // guna2DragControl1
@@ -148,15 +140,15 @@ namespace QLKhachSan.UI
             this.guna2DragControl1.TargetControl = this;
             this.guna2DragControl1.UseTransparentDrag = true;
             // 
-            // label2
+            // lbForgotPassword
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(961, 423);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 20);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Forgot Password?";
+            this.lbForgotPassword.AutoSize = true;
+            this.lbForgotPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbForgotPassword.Location = new System.Drawing.Point(961, 423);
+            this.lbForgotPassword.Name = "lbForgotPassword";
+            this.lbForgotPassword.Size = new System.Drawing.Size(145, 20);
+            this.lbForgotPassword.TabIndex = 3;
+            this.lbForgotPassword.Text = "Forgot Password?";
             // 
             // btnLogin
             // 
@@ -170,6 +162,7 @@ namespace QLKhachSan.UI
             this.btnLogin.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
             this.btnLogin.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(240)))));
             this.btnLogin.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(109)))), ((int)(((byte)(240)))));
+            this.btnLogin.FocusedColor = System.Drawing.Color.Goldenrod;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
             this.btnLogin.HoverState.FillColor = System.Drawing.Color.Goldenrod;
@@ -177,27 +170,43 @@ namespace QLKhachSan.UI
             this.btnLogin.Location = new System.Drawing.Point(798, 476);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(308, 54);
-            this.btnLogin.TabIndex = 7;
+            this.btnLogin.TabIndex = 4;
             this.btnLogin.Text = "Log in";
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
             // 
-            // frmLogin2
+            // guna2Panel1
+            // 
+            this.guna2Panel1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Panel1.BackgroundImage = global::QLKhachSan.Properties.Resources.qlks_background;
+            this.guna2Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.guna2Panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.guna2Panel1.Enabled = false;
+            this.guna2Panel1.Location = new System.Drawing.Point(0, 0);
+            this.guna2Panel1.Name = "guna2Panel1";
+            this.guna2Panel1.Size = new System.Drawing.Size(758, 642);
+            this.guna2Panel1.TabIndex = 0;
+            // 
+            // frmLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1138, 642);
             this.Controls.Add(this.btnLogin);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lbForgotPassword);
             this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.txtUsername);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2CirclePictureBox1);
-            this.Controls.Add(this.guna2ControlBox1);
+            this.Controls.Add(this.btnExit);
             this.Controls.Add(this.guna2Panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "frmLogin2";
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.KeyPreview = true;
+            this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin2";
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.frmLogin_KeyPress);
+            this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.frmLogin_KeyUp);
             ((System.ComponentModel.ISupportInitialize)(this.guna2CirclePictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -207,14 +216,14 @@ namespace QLKhachSan.UI
         #endregion
 
         private Guna.UI2.WinForms.Guna2Elipse guna2Elipse1;
-        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2ControlBox guna2ControlBox1;
+        private Guna.UI2.WinForms.Guna2ControlBox btnExit;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2CirclePictureBox guna2CirclePictureBox1;
         private Guna.UI2.WinForms.Guna2TextBox txtUsername;
         private Guna.UI2.WinForms.Guna2TextBox txtPassword;
         private Guna.UI2.WinForms.Guna2GradientButton btnLogin;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lbForgotPassword;
         private Guna.UI2.WinForms.Guna2DragControl guna2DragControl1;
+        private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
     }
 }
