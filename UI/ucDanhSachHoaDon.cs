@@ -34,12 +34,13 @@ namespace QLKhachSan.UI
             var columns = from t in lstHoaDon
                           select new
                           {
-                              STT = ++i, //0
-                              MaThuePhong = t.MaThuePhong, //1
-                              SoPhong = t.SoPhong, //2
-                              KhachHang = getTenKhach(t.MaKhach), //3
-                              DichVu = getTenDichVu(t.MaDichVu), //4
-                              ThanhTien = t.ThanhTien, //5
+                              STT = ++i,
+                              MaThuePhong = t.MaThuePhong,
+                              SoPhong = t.SoPhong,
+                              KhachHang = getTenKhach(t.MaKhach),
+                              DichVu = getTenDichVu(t.MaDichVu),
+                              Soluong = t.Soluong,
+                              ThanhTien = t.ThanhTien,
                           };
             gcHoaDon.DataSource = columns.ToList();
         }
